@@ -1,12 +1,7 @@
-using A2;
+
 using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using Unity.VisualScripting;
 using UnityEngine;
 
-namespace A2
-{
     //Moves the healing components in scene, in case of colliding with the player goes back to the queue
 
     [RequireComponent(typeof(CircleCollider2D))]
@@ -41,13 +36,10 @@ namespace A2
             MoveHealth();
         }
 
-        //Detects collisions and returns the object to the pool queue
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            //Adds health to the object with which the GO collided
             AddHealth(collision);
-            //Sets fx
-            StartCoroutine(SetVisuals(collision));
+            PoolLogic.Instance.ReturnToQueue(PoolLogic.PoolType.Health, gameObject);
         }
 
         //Returns to the queue after a certain amount of time. Works with script PoolLogic()
@@ -61,22 +53,6 @@ namespace A2
         private void MoveHealth()
         {
             transform.Translate(-horizontalSpeed * Time.deltaTime, 0, 0);
-        }
-
-        //Sets the FX
-        private IEnumerator SetVisuals(Collider2D collision)
-        {
-            //Sets the FX
-            var healingFxObject = PoolLogic.Instance.GetObject(PoolLogic.PoolType.HealthFx, transform.position);
-            //disables the renderer of the health, this is done so the FX can play and with a only scrip the GO are sent back to the queue, both FX and health
-            spriteRenderer.enabled = false;
-            yield return new WaitForSeconds(.7f);
-            //Return health FX to the queue
-            PoolLogic.Instance.ReturnToQueue(PoolLogic.PoolType.HealthFx, healingFxObject);
-            yield return new WaitForSeconds(.2f);
-            //Return health to the queue
-            PoolLogic.Instance.ReturnToQueue(PoolLogic.PoolType.Health, gameObject);
-
         }
 
         private void AddHealth(Collider2D collision)
@@ -106,5 +82,5 @@ namespace A2
 
         }
     }
-}
+
 

@@ -3,13 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace A2
-{
-    //Used a tutorial to do this script (https://youtu.be/Ah3epb2HGCw?si=Nr9DGE1EZgkHYQ2H). 
-    //Used it as a reference, didn't copy the code.
     public class PoolLogic : MonoBehaviour
     {
-        //Sets the necesarry pools and dictionarys to manage the pools and GOs
         public List<Pool> poolsList;
         [HideInInspector] public Dictionary<PoolType, Queue<GameObject>> singlePool;
         public bool DEBUG = false;
@@ -21,9 +16,6 @@ namespace A2
             Obstacles,
             Map,
             Health,
-            DeathFx,
-            HitFx,
-            HealthFx
         }
 
         [System.Serializable] //Makes the pool settings visible in the editor
@@ -115,5 +107,5 @@ namespace A2
             singlePool[poolType].Enqueue(obj);
         }
     }
-}
+
 

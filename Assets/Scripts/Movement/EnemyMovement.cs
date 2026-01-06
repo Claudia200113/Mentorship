@@ -5,11 +5,6 @@ using UnityEngine;
 
 namespace A2
 {
-    //Controls the movement of the enemy and returns the GO to the pool queue
-
-    [RequireComponent(typeof(SpriteRenderer))]
-    [RequireComponent(typeof(Rigidbody2D))]
-    [RequireComponent(typeof(Collider2D))]
     public class EnemyMovement : MonoBehaviour
     {
         public bool DEBUG;
@@ -72,13 +67,6 @@ namespace A2
         {
             if (collision.gameObject.tag != "Boundries")
             {
-                //Instanciates de fx 
-                var deathFXSpawned = PoolLogic.Instance.GetObject(PoolLogic.PoolType.DeathFx, transform.position);
-                //Sets the sprite renderer to false so the sprite is no longer visible
-                spriteRenderer.enabled = false;
-                yield return new WaitForSeconds(1f);
-                //Returns Fx to queue
-                PoolLogic.Instance.ReturnToQueue(PoolLogic.PoolType.DeathFx, deathFXSpawned);
                 yield return new WaitForSeconds(.2f);
                 //Returns enemy prefab to pool
                 PoolLogic.Instance.ReturnToQueue(PoolLogic.PoolType.Enemy, gameObject);

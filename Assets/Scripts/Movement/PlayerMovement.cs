@@ -10,8 +10,7 @@ namespace A2
     {
         public bool DEBUG;
 
-        [HideInInspector]
-        public      Rigidbody2D     rigidBody;
+        private      Rigidbody2D     rigidBody;
         [HideInInspector]
         public      Vector2         playerDirection;
         private     SpriteRenderer  spriteRenderer;
@@ -37,10 +36,8 @@ namespace A2
 
         private void Awake()
         {
-            //Gets the components in the GO
             rigidBody = GetComponent<Rigidbody2D>();
             spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-            //Sets the default gravity and the falling one
             normalGravity = rigidBody.gravityScale;
             fallingGravity = normalGravity + scalingGravityFactor;
         }
@@ -56,12 +53,9 @@ namespace A2
 
         private void ListenForInputs()
         {
-            //Used to check if the player is grounded by calculating the distance to the groundlayer, used to prevent double jumping.
-            isGrounded = Physics2D.OverlapCircle(feetPosition.position, groundDistanceToJump, groundLayer);
+            isGrounded = Physics2D.Raycast(feetPosition.position, Vector2.down, groundDistanceToJump, groundLayer);
             float directionX = Input.GetAxis("Horizontal");
 
-
-            //Will set a different speed depending if the player is going backwards or forward
             if (directionX < 0)
             {
                 playerGoingBackwards = true;
@@ -73,21 +67,16 @@ namespace A2
 
             playerDirection = new Vector2(directionX, 0);
 
-            //Checks if player is grounded so they can jump
             if (isGrounded && Input.GetKeyDown(KeyCode.Space))
             {
                 isJumping = true;
             }
         }
 
-        //Will process the player`s velocity in case it is going forward or backwards and sets the correspoding velocity 
-        //to the rigidbody
         private void ProcessInputs()
         {
-            //Uses the current velocity in the rigidbody
             Vector2 currentVelocity = rigidBody.velocity;
 
-            //Used in case the player is going backwards
             if (playerGoingBackwards)
             {
                 if (DEBUG)
@@ -95,24 +84,20 @@ namespace A2
                     Debug.Log("PLAYER: Going backwards setting speed to: " + playerSpeedBackwards);
                 }
 
-                //Adds the corresponding velocity to the RB and flips the spriteRenderer
                 rigidBody.velocity = new Vector2(playerDirection.x * playerSpeedBackwards, currentVelocity.y);
                 spriteRenderer.flipX = true;
             }
-            else //Used in case the player is going forward
+            else 
             {
                 if (DEBUG)
                 {
                     Debug.Log("PLAYER: Going forward setting speed to: " + playerSpeedForward);
                 }
 
-                //Adds the corresponding velocity to the RB and "unflips" the spriterender
                 rigidBody.velocity = new Vector2(playerDirection.x * playerSpeedForward, currentVelocity.y);
                 spriteRenderer.flipX = false;
             }
 
-
-            //Used in case the player is jumping
             if (isJumping)
             {
                 if (DEBUG)
@@ -120,28 +105,24 @@ namespace A2
                     Debug.Log("PLAYER: Player is jumping");
                 }
 
-                //AddForce to the rigidbody in an impulse mode so the player jumps
                 rigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
                 isJumping = false;
             }
 
-            //If the player is humping the gravity scale will go higher to make the fall feel tighter
             if (rigidBody.velocity.y < 0)
             {
                 rigidBody.gravityScale = fallingGravity;
             }
-            else if (rigidBody.velocity.y >= 0) //When the player is touching the ground the gravity returns to default value
+            else if (rigidBody.velocity.y >= 0) 
             {
                 rigidBody.gravityScale = normalGravity;
             }
-            //Debugs a ray to check the player direction
             if (DEBUG)
             {
                 Debug.DrawRay(transform.position, rigidBody.velocity, Color.red);
             }
         }
 
-        //Debugs the circle with which isGrounded bool is calculated (distance to the ground).
         private void OnDrawGizmos()
         {
             if (DEBUG)

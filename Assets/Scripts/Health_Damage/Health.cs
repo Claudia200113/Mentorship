@@ -4,10 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics.Tracing;
 using System.Runtime.CompilerServices;
 using UnityEngine;
-using static A2.Spawner;
 
-namespace A2
-{
     /*Manages the health of the GO that has the script. 
      * Has three main methods: 
      * 1.TakeDamage (recieves a int) -> Will rest health and check if the player is alive or death, in case it dies calls DeathFromDamage
@@ -79,10 +76,7 @@ namespace A2
         //If health reaches 0, GO is deactivated.
         private void DeathFromDamage()
         {
-            StartCoroutine(SetArtOnDeath());
-            //Sets the GameObject inactive
             gameObject.SetActive(false);
-
             if (DEBUG)
             {
                 Debug.Log("HEALTH: " + gameObject.name + " died from damage, gameObject deactivated");
@@ -128,14 +122,5 @@ namespace A2
                 }
             }
         }
-
-        private IEnumerator SetArtOnDeath()
-        {
-            //Instances the death FX
-            var deathFXSpawned = PoolLogic.Instance.GetObject(PoolLogic.PoolType.DeathFx, transform.position);
-            yield return new WaitForSeconds(3f);
-            //Returns the object to the queue
-            PoolLogic.Instance.ReturnToQueue(PoolLogic.PoolType.DeathFx, deathFXSpawned);
-        }
     }
-}
+
