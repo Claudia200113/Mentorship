@@ -5,7 +5,6 @@ using UnityEngine;
 
 namespace A2
 {
-    //Spawns the map using the pool manager script  
     public class MapSpawner : MonoBehaviour
     {
         public Transform posSpawn;
@@ -22,10 +21,10 @@ namespace A2
 
                 GameManager.Instance.poolLogic.GetObject(PoolLogic.PoolType.Map, posSpawn.localPosition);
             }
-            else
+            /*else
             {
                 GameManager.Instance.poolLogic.ReturnToQueue(PoolLogic.PoolType.Map, transform.parent.gameObject);
-            }
+            }*/
         }
     }
 

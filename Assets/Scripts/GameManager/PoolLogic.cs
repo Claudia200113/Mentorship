@@ -8,7 +8,6 @@ using UnityEngine;
         [HideInInspector] public Dictionary<PoolType, Queue<GameObject>> singlePool;
         public bool DEBUG = false;
 
-        //Limits the pool type that can be choosen to reduce errors
         public enum PoolType
         {
             Enemy,
@@ -16,10 +15,7 @@ using UnityEngine;
             Map,
             Health,
         }
-
-  
-
-        private void Awake()
+        private void Start()
         {
             SetupPools();
         }
@@ -28,7 +24,7 @@ using UnityEngine;
         {
             singlePool = new Dictionary<PoolType, Queue<GameObject>>();
 
-            if (GameManager.Instance.poolsList.Count != 0)
+            if (GameManager.Instance.poolsList.Count != 0 )
             {
                 foreach (GameManager.Pool pool in GameManager.Instance.poolsList)
                 {
@@ -45,7 +41,7 @@ using UnityEngine;
             }
             else
             {
-                Debug.LogError("POOL LOGIC: No pools were assigned");
+                Debug.LogError("POOL LOGIC: No pools were assigned in game manager.");
             }
         }
         public GameObject GetObject(PoolType poolType, Vector3 position)
