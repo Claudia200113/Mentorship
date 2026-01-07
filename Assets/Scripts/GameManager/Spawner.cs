@@ -44,7 +44,7 @@ using UnityEngine;
 
                 Vector3 locToSpawn = spawnerSetup.spawnLocation.localPosition;
                 yield return new WaitForSeconds(Random.Range(spawnerSetup.minTimeSpawn, spawnerSetup.maxTimeSpawn));
-                PoolLogic.Instance.GetObject(spawnerSetup.poolType, locToSpawn);
+                GameManager.Instance.poolLogic.GetObject(spawnerSetup.poolType, locToSpawn);
             }
         }
     }

@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 3945583261055855146}
   - component: {fileID: 4844764181753407444}
   - component: {fileID: 4785611809383771024}
+  - component: {fileID: 820585970526700517}
   m_Layer: 10
   m_Name: Healing
   m_TagString: Health
@@ -233,3 +234,18 @@ MonoBehaviour:
   destroyAfterSeconds: 1.8
   horizontalSpeed: 5
   healthGained: 5
+--- !u!114 &820585970526700517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6896830740535067437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ec3abb9f94f7e6499ae5e7a4f9a8cd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DEBUG: 0
+  horizontalSpeed: 1
+  destroyAfterSeconds: 5

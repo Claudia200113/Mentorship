@@ -5,6 +5,20 @@ using UnityEngine;
 //Singleton type
 public class GameManager : MonoBehaviour
 {
+    //List for pools--------------------------------------------
+    public List<Pool> poolsList;
+    
+    [System.Serializable]
+    public class Pool
+    {
+        public PoolLogic.PoolType typeOfPool;
+        public GameObject prefab;
+        public int poolSize;
+        public Transform GOParent;
+    }
+    
+    //-----------------------------------------------------------
+    
     //List for spawners-----------------------------------------------------------
     public List<SpawnerSetup> spawnerSetups;
 
@@ -17,6 +31,10 @@ public class GameManager : MonoBehaviour
         public Transform spawnLocation;
     }
     //----------------------------------------------------------------------------
+    
+    [Header("References")]
+    public PoolLogic poolLogic;
+    
     public static GameManager Instance
     {
         get;

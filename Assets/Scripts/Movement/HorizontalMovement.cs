@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace A2
 {
-    public class EnemyMovement : MonoBehaviour
+    public class HorizontalMovement : MonoBehaviour
     {
         public bool DEBUG;
         public float horizontalSpeed = 1f;
@@ -13,7 +13,6 @@ namespace A2
         private new Rigidbody2D rigidbody;
         private SpriteRenderer spriteRenderer;
 
-        //Gets Rigidbody assigned
         private void Awake()
         {
             rigidbody = GetComponent<Rigidbody2D>();
@@ -28,49 +27,34 @@ namespace A2
                 Debug.DrawRay(transform.position, new Vector3(-horizontalSpeed, 0, 0) * .5f, Color.red);
             }
         }
-        //Calls method that moves the enemy
         private void FixedUpdate()
         {
-            MoveEnemy();
+            Move();
         }
-
-        //Returns the GO to the queue after a certaing amount of time
         private void Start()
         {
             StartCoroutine(ReturnToQueueTime());
         }
 
-        //Translates the enemy position
-        private void MoveEnemy()
-        {
-
+        private void Move()
+        { 
             transform.Translate(-horizontalSpeed * Time.deltaTime, 0, 0);
-
         }
 
-        //Returns the GO the the queue after certain time
         IEnumerator ReturnToQueueTime()
         {
             yield return new WaitForSeconds(destroyAfterSeconds);
-            PoolLogic.Instance.ReturnToQueue(PoolLogic.PoolType.Enemy, gameObject);
+            GameManager.Instance.poolLogic.ReturnToQueue(PoolLogic.PoolType.Enemy, gameObject);
         }
 
-        //When colliding will send the GO back to the queue and start the coroutine set art
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            StartCoroutine(Collided(collision));
-
+            GameManager.Instance.poolLogic.ReturnToQueue(PoolLogic.PoolType.Enemy, gameObject);
         }
 
-        //Will set art on death and get the objects back to the queue
-        private IEnumerator Collided(Collision2D collision)
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.gameObject.tag != "Boundries")
-            {
-                yield return new WaitForSeconds(.2f);
-                //Returns enemy prefab to pool
-                PoolLogic.Instance.ReturnToQueue(PoolLogic.PoolType.Enemy, gameObject);
-            }
+            GameManager.Instance.poolLogic.ReturnToQueue(PoolLogic.PoolType.Enemy, gameObject);
         }
     }
 }

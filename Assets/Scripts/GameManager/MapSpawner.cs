@@ -8,13 +8,11 @@ namespace A2
     //Spawns the map using the pool manager script  
     public class MapSpawner : MonoBehaviour
     {
-        //Gets the position where the map should spawn
         public Transform posSpawn;
         public bool DEBUG;
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            //If the map enters the trigger the GO is retrieved from the pool
             if (collision.CompareTag("SpawnerMap"))
             {
                 if (DEBUG)
@@ -22,12 +20,11 @@ namespace A2
                     Debug.Log("MAP SPAWNER: Collision detected");
                 }
 
-                PoolLogic.Instance.GetObject(PoolLogic.PoolType.Map, posSpawn.localPosition);
+                GameManager.Instance.poolLogic.GetObject(PoolLogic.PoolType.Map, posSpawn.localPosition);
             }
-            else if (collision.CompareTag("MapRequeue"))
+            else
             {
-                //If the map enters the requiered collider it will return the GO to the queue
-                PoolLogic.Instance.ReturnToQueue(PoolLogic.PoolType.Map, transform.parent.gameObject);
+                GameManager.Instance.poolLogic.ReturnToQueue(PoolLogic.PoolType.Map, transform.parent.gameObject);
             }
         }
     }
