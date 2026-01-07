@@ -54,6 +54,7 @@ namespace A2
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
+            Debug.Log("Triggered");
             GameManager.Instance.poolLogic.ReturnToQueue(PoolLogic.PoolType.Enemy, gameObject);
         }
     }

@@ -67,7 +67,7 @@ namespace A2
 
             playerDirection = new Vector2(directionX, 0);
 
-            if (isGrounded && Input.GetKeyDown(KeyCode.Space))
+            if (isGrounded && Input.GetAxis("Vertical") > 0)
             {
                 isJumping = true;
             }
