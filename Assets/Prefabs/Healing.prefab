@@ -231,8 +231,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DEBUG: 0
-  destroyAfterSeconds: 1.8
-  horizontalSpeed: 5
   healthGained: 5
 --- !u!114 &820585970526700517
 MonoBehaviour:
@@ -247,5 +245,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DEBUG: 0
-  horizontalSpeed: 1
-  destroyAfterSeconds: 5
+  horizontalSpeed: 0.5
+  destroyAfterSeconds: 2
+  poolType: 3

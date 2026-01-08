@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 namespace A2
@@ -8,18 +6,18 @@ namespace A2
     public class HorizontalMovement : MonoBehaviour
     {
         public bool DEBUG;
-        public float horizontalSpeed = 1f;
-        public float destroyAfterSeconds = 5f;
+        
+        [SerializeField] private float horizontalSpeed = 1f;
+        [SerializeField] private float destroyAfterSeconds = 5f;
+        [SerializeField] private PoolLogic.PoolType poolType;
+        
         private new Rigidbody2D rigidbody;
-        private SpriteRenderer spriteRenderer;
 
         private void Awake()
         {
-            rigidbody = GetComponent<Rigidbody2D>();
-            spriteRenderer = GetComponent<SpriteRenderer>();
+            rigidbody = rigidbody != null ? GetComponent<Rigidbody2D>() : gameObject.AddComponent<Rigidbody2D>();
         }
 
-        //Debugs the direction the enemy is moving towards
         private void Update()
         {
             if (DEBUG)
@@ -44,18 +42,17 @@ namespace A2
         IEnumerator ReturnToQueueTime()
         {
             yield return new WaitForSeconds(destroyAfterSeconds);
-            GameManager.Instance.poolLogic.ReturnToQueue(PoolLogic.PoolType.Enemy, gameObject);
+            ReturnToQueue();
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            GameManager.Instance.poolLogic.ReturnToQueue(PoolLogic.PoolType.Enemy, gameObject);
+            ReturnToQueue();
         }
 
-        private void OnTriggerEnter2D(Collider2D collision)
+        private void ReturnToQueue()
         {
-            Debug.Log("Triggered");
-            GameManager.Instance.poolLogic.ReturnToQueue(PoolLogic.PoolType.Enemy, gameObject);
+            GameManager.Instance.poolLogic.ReturnToQueue(poolType, gameObject);
         }
     }
 }
