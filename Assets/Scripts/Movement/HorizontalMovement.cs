@@ -13,11 +13,6 @@ namespace A2
         
         private new Rigidbody2D rigidbody;
 
-        private void Awake()
-        {
-            rigidbody = rigidbody != null ? GetComponent<Rigidbody2D>() : gameObject.AddComponent<Rigidbody2D>();
-        }
-
         private void Update()
         {
             if (DEBUG)
@@ -31,6 +26,7 @@ namespace A2
         }
         private void Start()
         {
+            rigidbody = rigidbody != null? GetComponent<Rigidbody2D>() : gameObject.AddComponent<Rigidbody2D>();
             StartCoroutine(ReturnToQueueTime());
         }
 

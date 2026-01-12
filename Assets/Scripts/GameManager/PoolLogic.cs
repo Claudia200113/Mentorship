@@ -10,8 +10,9 @@ using UnityEngine;
 
         public enum PoolType
         {
-            Enemy,
-            Obstacles,
+            Bat,
+            Barrel,
+            Stalactite,
             Map,
             Health,
         }

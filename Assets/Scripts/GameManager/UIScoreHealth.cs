@@ -46,7 +46,7 @@ namespace A2
 
         private void GetHealth()
         {
-            healthText.text = "Health: " + health.currentHP.ToString();
+            healthText.text = "Health: " + health.currentHp.ToString();
         }
 
         private void GetScore()
@@ -62,7 +62,7 @@ namespace A2
 
         private void PlayerDied()
         {
-            if (health.currentHP <= 0)
+            if (health.currentHp <= 0)
             {
                 playerDead.SetActive(true);
             }

@@ -15,9 +15,9 @@ using UnityEngine;
     {
         public bool DEBUG;
 
-        public float currentHP;
+        public float currentHp;
         public float timeDamageArt = .3f;
-        private float maxHP = 100f;
+        public float maxHp = 100f;
         private float counterDamage = 0;
         private bool damageTaken = false;
         [HideInInspector]
@@ -32,7 +32,7 @@ using UnityEngine;
         //Sets the current health to the max health everytime the game runs
         void Start()
         {
-            currentHP = maxHP;
+            currentHp = maxHp;
         }
         //Updates the damage art
         private void Update()
@@ -43,23 +43,23 @@ using UnityEngine;
         //The object will take damage, set the art and substract the damage taken from the curren HP. Returns a bool.
         public bool TakeDamage(float damage)
         {
-            currentHP -= damage;
+            currentHp -= damage;
             counterDamage = 0;
             //Setting this true calls UpdateDamageArt() so GO color is set to red
             damageTaken = true;
 
             //After taking damage will check if GO is alive
-            if (currentHP > 0)
+            if (currentHp > 0)
             {
                 if (DEBUG)
                 {
-                    Debug.Log("HEALTH: " + gameObject.name + " was damaged, life now at " + currentHP);
+                    Debug.Log("HEALTH: " + gameObject.name + " was damaged, life now at " + currentHp);
                 }
 
                 dead = false;
 
             }
-            else if (currentHP <= 0) //If health goes less than 0, DeathFromDamage is called 
+            else if (currentHp <= 0) //If health goes less than 0, DeathFromDamage is called 
             {
                 if (DEBUG)
                 {
@@ -87,19 +87,19 @@ using UnityEngine;
         public void GainHealth(int health)
         {
             //If health is grater than 100 no health is added
-            if (currentHP > 100)
+            if (currentHp > 100)
             {
                 if (DEBUG)
                 {
                     Debug.Log("HEALTH:" + gameObject.name + " health´s is 100, can't add more");
                 }
             }//If health is less than 100, extra helath is added
-            else if (currentHP < 100)
+            else if (currentHp < 100)
             {
-                currentHP += health;
+                currentHp += health;
                 if (DEBUG)
                 {
-                    Debug.Log("HEALTH:" + gameObject.name + " gained " + health + ", now health is at: " + currentHP);
+                    Debug.Log("HEALTH:" + gameObject.name + " gained " + health + ", now health is at: " + currentHp);
                 }
             }
         }
