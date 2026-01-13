@@ -13,6 +13,11 @@ namespace A2
         
         private new Rigidbody2D rigidbody;
 
+        private void Start()
+        {
+            rigidbody = GetComponent<Rigidbody2D>();
+            StartCoroutine(ReturnToQueueTime());
+        }
         private void Update()
         {
             if (DEBUG)
@@ -23,11 +28,6 @@ namespace A2
         private void FixedUpdate()
         {
             Move();
-        }
-        private void Start()
-        {
-            rigidbody = rigidbody != null? GetComponent<Rigidbody2D>() : gameObject.AddComponent<Rigidbody2D>();
-            StartCoroutine(ReturnToQueueTime());
         }
 
         private void Move()
