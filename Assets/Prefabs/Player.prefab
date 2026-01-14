@@ -122,14 +122,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DEBUG: 0
-  rigidBody: {fileID: 0}
   playerDirection: {x: 0, y: 0}
   playerSpeedForward: 5
   playerSpeedBackwards: 2.5
-  jumpForce: 15
+  jumpForce: 13
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   groundDistanceToJump: 0.3
   isGrounded: 0
   feetPosition: {fileID: 0}
@@ -146,8 +145,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DEBUG: 0
-  currentHP: 0
+  currentHp: 0
   timeDamageArt: 0.3
+  maxHp: 100
 --- !u!1 &4630897851199890323
 GameObject:
   m_ObjectHideFlags: 0

@@ -67,12 +67,12 @@ namespace A2
 
             playerDirection = new Vector2(directionX, 0);
                 
-            if (isGrounded && Input.GetButtonDown("Vertical"))
+            if (isGrounded && Input.GetButtonDown("Jump") || Input.GetButtonDown("Vertical"))
             {
                 isJumping = true;
             }
 
-            if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+            if (Input.GetKeyDown(KeyCode.R) && isGrounded)
             {
                 isInverted = !isInverted;
                 rigidBody.gravityScale = isInverted ? normalGravity * -1: normalGravity;

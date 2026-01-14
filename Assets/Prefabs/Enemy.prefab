@@ -176,7 +176,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DEBUG: 0
   horizontalSpeed: 10
-  destroyAfterSeconds: 6
+  destroyAfterSeconds: 5
+  poolType: 0
 --- !u!114 &7015512681366780581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,8 +205,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DEBUG: 0
-  currentHP: 0
+  currentHp: 0
   timeDamageArt: 0.3
+  maxHp: 100
 --- !u!61 &8928953801307148642
 BoxCollider2D:
   m_ObjectHideFlags: 0

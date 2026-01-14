@@ -15,6 +15,7 @@ using UnityEngine;
             Stalactite,
             Map,
             Health,
+            Gem,
         }
         private void Start()
         {
