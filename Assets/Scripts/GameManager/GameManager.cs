@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     
     [Header("References")]
     public PoolLogic poolLogic;
+    public PlayerInventory playerInventory;
     
     public static GameManager Instance
     {

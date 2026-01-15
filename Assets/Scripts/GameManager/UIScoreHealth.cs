@@ -8,12 +8,9 @@ namespace A2
 {
     public class UIScoreHealth : MonoBehaviour
     {
-        //Textbox for health to be shown
         [SerializeField] private TextMeshProUGUI healthText;
-        //Textbox for score to be shown
         [SerializeField] private TextMeshProUGUI scoreText;
-        //GO with death message
-        [SerializeField] private GameObject playerDead;
+        [SerializeField] private TextMeshProUGUI gemsText;
         [SerializeField] private Health health;
         private float currentScore = 1;
 
@@ -23,10 +20,8 @@ namespace A2
             private set;
         }
 
-        //Sets the script to be a singleton.
         private void Awake()
         {
-            //If script is instanced it will destroy it 
             if (Instance != null)
             {
                 Destroy(gameObject);
@@ -41,7 +36,7 @@ namespace A2
         {
             GetHealth();
             GetScore();
-            PlayerDied();
+            GetGems();
         }
 
         private void GetHealth()
@@ -50,22 +45,15 @@ namespace A2
         }
 
         private void GetScore()
-        {
-            //If player is valid, the score continuously goes up
-            if (GameObject.FindGameObjectWithTag("Player") != null)
-            {
-                currentScore += 1 * Time.deltaTime;
-            }
+        { 
+            currentScore += 1 * Time.deltaTime;
             scoreText.text = "Score: " + (int)currentScore;
         }
-        
 
-        private void PlayerDied()
+        private void GetGems()
         {
-            if (health.currentHp <= 0)
-            {
-                playerDead.SetActive(true);
-            }
+            int numberGems = GameManager.Instance.playerInventory.numberGems;
+            gemsText.text = "x " + numberGems;
         }
 
     }
