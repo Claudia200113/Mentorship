@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     //List for pools--------------------------------------------
+    [Header("Pools")]
     public List<Pool> poolsList;
     
     [System.Serializable]
@@ -20,6 +21,7 @@ public class GameManager : MonoBehaviour
     //-----------------------------------------------------------
     
     //List for spawners-----------------------------------------------------------
+    [Header("Spawners")]
     public List<SpawnerSetup> spawnerSetups;
 
     [System.Serializable] 
