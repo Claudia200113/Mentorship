@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class MenuHandler : MonoBehaviour
+public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject menu;
     public static bool GamePaused = false;
@@ -48,14 +47,4 @@ public class MenuHandler : MonoBehaviour
         GamePaused = true;
     }
 
-    public void LoadMainMenu()
-    {
-        Time.timeScale = 1;
-        SceneManager.LoadScene(0);
-    }
-
-    public void QuitGame()
-    {
-        Application.Quit();
-    }
 }

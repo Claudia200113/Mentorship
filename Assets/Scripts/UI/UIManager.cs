@@ -2,13 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [Header("UI Text")]
-    [SerializeField] public TextMeshProUGUI healthText;
-    [SerializeField] public TextMeshProUGUI scoreText;
-    [SerializeField] public TextMeshProUGUI gemsText;
+    [Header("UI Text")] 
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI gemsText;
+
+    [Header("Health")] 
+    public Image heartImage;
+    public Sprite fullHeart, halfHeart, threeQuartersHeart, quarterHeart, emptyHeart;
+    
 
     public static UIManager Instance
     {

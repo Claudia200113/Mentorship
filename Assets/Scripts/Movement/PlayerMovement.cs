@@ -41,7 +41,9 @@ namespace A2
         }
         void Update()
         {
-            ListenForInputs();
+            HorizontalMovement();
+            ChangeFloor();
+            Jump();
         }
 
         private void FixedUpdate()
@@ -49,10 +51,8 @@ namespace A2
             ProcessInputs();
         }
 
-        private void ListenForInputs()
+        private void HorizontalMovement()
         {
-            Vector2 groundCheck = isInverted ? Vector2.up : Vector2.down;
-            isGrounded = Physics2D.Raycast(feetPosition.position, groundCheck, groundDistanceToJump, groundLayer);
             float directionX = Input.GetAxis("Horizontal");
             Debug.DrawRay(feetPosition.position, Vector2.down * groundDistanceToJump, Color.red);
             
@@ -65,13 +65,21 @@ namespace A2
                 playerGoingBackwards = false;
             }
 
-            playerDirection = new Vector2(directionX, 0);
-                
-            if (isGrounded && Input.GetButtonDown("Jump") || Input.GetButtonDown("Vertical"))
+            playerDirection = new Vector2(directionX, 0);   
+        }
+
+        private void Jump()
+        {
+            Vector2 groundCheck = isInverted ? Vector2.up : Vector2.down;
+            isGrounded = Physics2D.Raycast(feetPosition.position, groundCheck, groundDistanceToJump, groundLayer);
+            
+            if (isGrounded && (Input.GetButtonDown("Jump") || Input.GetButtonDown("Vertical")))
             {
                 isJumping = true;
             }
-
+        }
+        private void ChangeFloor()
+        {
             if (Input.GetKeyDown(KeyCode.R) && isGrounded)
             {
                 isInverted = !isInverted;

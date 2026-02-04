@@ -6,6 +6,11 @@ using UnityEngine;
 public class UIUpdator : MonoBehaviour
 {
     private float score;
+
+    private void Awake()
+    {
+        
+    }
     private void Update()
     {
         SetScore();
