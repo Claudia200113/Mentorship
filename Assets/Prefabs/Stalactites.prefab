@@ -207,4 +207,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DEBUG: 0
-  damageToDeal: 10
+  damageToDeal: 20

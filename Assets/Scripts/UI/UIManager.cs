@@ -1,36 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIManager : MonoBehaviour
+namespace UI
 {
-    [Header("UI Text")] 
-    public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI gemsText;
-
-    [Header("Health")] 
-    public Image heartImage;
-    public Sprite fullHeart, halfHeart, threeQuartersHeart, quarterHeart, emptyHeart;
-    
-
-    public static UIManager Instance
+    public class UIManager : MonoBehaviour
     {
-        get;
-        set;
-    }
-
-    private void Awake()
-    {
-        if (Instance != null)
+        [Header("UI Text")] 
+        public TextMeshProUGUI scoreText;
+        public TextMeshProUGUI gemsText;
+        
+        [Header("Hearts Sprites")]
+        public Sprite emptyHeart;
+        public Sprite fullHeart;
+        public Image[] hearts;
+        
+        public static UIManager Instance
         {
-            Destroy(gameObject);
-        }
-        else
-        {
-            Instance = this;
+            get;
+            set;
         }
 
+        private void Awake()
+        {
+            if (Instance != null)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                Instance = this;
+            }
+
+        }
     }
 }

@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
     //----------------------------------------------------------------------------
     
     [Header("References")]
+    public Health playerHealth;
     public PoolLogic poolLogic;
     public PlayerInventory playerInventory;
     
