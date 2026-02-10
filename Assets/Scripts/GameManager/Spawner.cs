@@ -47,5 +47,13 @@ using UnityEngine;
                 GameManager.Instance.poolLogic.GetObject(spawnerSetup.poolType, locToSpawn);
             }
         }
+
+        public IEnumerator SingleSpawn(PoolLogic.PoolType poolType, Vector3 locToSpawn, float lifeTime)
+        { 
+            var pool = GameManager.Instance.poolLogic;
+           GameObject prefabSpawned = pool.GetObject(poolType, locToSpawn);
+           yield return new WaitForSeconds(lifeTime);
+           pool.ReturnToQueue(poolType, prefabSpawned);
+        }
     }
 

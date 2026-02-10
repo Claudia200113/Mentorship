@@ -6,13 +6,10 @@ using UnityEngine;
 public class PlayerInventory : MonoBehaviour
 {
     [HideInInspector]
-    public int numberGems;
-
-    private void OnCollisionEnter2D(Collision2D other)
+    public int numberGems; 
+    
+    public void AddGem()
     {
-        if (other.gameObject.CompareTag("Gem"))
-        {
-            numberGems++;
-        }
+        numberGems++;
     }
 }

@@ -125,8 +125,8 @@ MonoBehaviour:
   DEBUG: 0
   playerDirection: {x: 0, y: 0}
   playerSpeedForward: 5
-  playerSpeedBackwards: 2.5
-  jumpForce: 13
+  playerSpeedBackwards: 3
+  jumpForce: 12
   groundLayer:
     serializedVersion: 2
     m_Bits: 8

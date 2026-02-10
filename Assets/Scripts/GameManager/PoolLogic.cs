@@ -11,11 +11,11 @@ using UnityEngine;
         public enum PoolType
         {
             Bat,
-            Barrel,
             Stalactite,
             Map,
             Health,
             Gem,
+            GemPickUpFX,
         }
         private void Start()
         {

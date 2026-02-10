@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
     public Health playerHealth;
     public PoolLogic poolLogic;
     public PlayerInventory playerInventory;
+    public Spawner spawner;
     
     public static GameManager Instance
     {
