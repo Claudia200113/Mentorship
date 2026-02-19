@@ -14,17 +14,13 @@ namespace A2
         {
             if (collision.CompareTag("SpawnerMap"))
             {
-                if (DEBUG)
-                {
-                    Debug.Log("MAP SPAWNER: Collision detected");
-                }
-
-                GameManager.Instance.poolLogic.GetObject(PoolLogic.PoolType.Map, posSpawn.localPosition);
+                GameManager.Instance.poolLogic.GetObject(PoolLogic.PoolType.Map, posSpawn.transform.position);
             }
-            /*else
-            {
-                GameManager.Instance.poolLogic.ReturnToQueue(PoolLogic.PoolType.Map, transform.parent.gameObject);
-            }*/
+           else if (collision.CompareTag("MapRequeue"))
+           {
+               
+               GameManager.Instance.poolLogic.ReturnToQueue(PoolLogic.PoolType.Map, transform.parent.gameObject);
+            }
         }
     }
 

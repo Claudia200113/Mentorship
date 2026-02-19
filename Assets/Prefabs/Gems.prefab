@@ -146,4 +146,4 @@ MonoBehaviour:
   DEBUG: 0
   horizontalSpeed: 2.5
   destroyAfterSeconds: 5
-  poolType: 5
+  poolType: 4

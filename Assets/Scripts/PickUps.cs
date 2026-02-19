@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class PickUps : MonoBehaviour
 {
-   private void OnCollisionEnter(Collision collision)
+   [Header("Gem")]
+   [SerializeField] private PoolLogic.PoolType gemFX;
+   [SerializeField] private float lifeTimeGemFX = 2f;
+   
+   
+   private void OnCollisionEnter2D(Collision2D collision)
    {
       if (collision.gameObject.CompareTag("Gem"))
       {
          GameManager.Instance.playerInventory.AddGem();
          StartCoroutine(GameManager.Instance.spawner.SingleSpawn(
-            PoolLogic.PoolType.Gem, 
+            gemFX, 
             collision.transform.position, 
-            3f));
+            lifeTimeGemFX));
       }
    }
 }
