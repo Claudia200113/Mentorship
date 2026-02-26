@@ -84,7 +84,6 @@ namespace A2
             {
                 isInverted = !isInverted;
                 rigidBody.gravityScale = isInverted ? normalGravity * -1: normalGravity;
-                //spriteRenderer.flipY = !isInverted;
                 gameObject.transform.Rotate(180f, 0f, 0f, Space.World);
             }
         }

@@ -133,7 +133,7 @@ MonoBehaviour:
     m_Bits: 8
   groundDistanceToJump: 0.3
   isGrounded: 0
-  feetPosition: {fileID: 0}
+  feetPosition: {fileID: 5774774002662705288}
 --- !u!114 &6901218721879902241
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,12 +5,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-namespace A2
-{
-    /*
-     * Manages the damage on collision. If the GO that has this script collides with an object, will try to find in the collision object has 
-     * a health script and make damage to it.
-     */
 
     [RequireComponent(typeof(Collider2D))]
     public class DamageOnCollision : MonoBehaviour
@@ -39,10 +33,8 @@ namespace A2
             }
             else
             {
-
                 //If the collision had a health scripts, deals damage to it
                 health.TakeDamage(damageToDeal);
-
             }
 
             if (DEBUG)
@@ -51,4 +43,4 @@ namespace A2
             }
         }
     }
-}
+
