@@ -12,9 +12,7 @@ public class GameManager : MonoBehaviour
     [System.Serializable]
     public class Pool
     {
-        public PoolLogic.PoolType typeOfPool;
-        public GameObject prefab;
-        public int poolSize;
+        public SO_PoolSetup poolSo;
         public Transform GOParent;
     }
     
@@ -23,15 +21,14 @@ public class GameManager : MonoBehaviour
     //List for spawners-----------------------------------------------------------
     [Header("Spawners")]
     public List<SpawnerSetup> spawnerSetups;
-
+    
     [System.Serializable] 
     public class SpawnerSetup
     {
-        public PoolLogic.PoolType poolType;
-        public float minTimeSpawn;
-        public float maxTimeSpawn;
+        public SO_SpawerSetup spawnerSo;
         public Transform spawnLocation;
     }
+    
     //----------------------------------------------------------------------------
     
     [Header("References")]

@@ -39,12 +39,12 @@ using UnityEngine;
             {
                 if (DEBUG)
                 {
-                    Debug.Log("SPAWNER: Instancing a new prefab type:" + spawnerSetup.poolType);
+                    Debug.Log("SPAWNER: Instancing a new prefab type:" + spawnerSetup.spawnerSo.poolType);
                 }
 
                 Vector3 locToSpawn = spawnerSetup.spawnLocation.localPosition;
-                yield return new WaitForSeconds(Random.Range(spawnerSetup.minTimeSpawn, spawnerSetup.maxTimeSpawn));
-                GameManager.Instance.poolLogic.GetObject(spawnerSetup.poolType, locToSpawn);
+                yield return new WaitForSeconds(Random.Range(spawnerSetup.spawnerSo.minTimeSpawn, spawnerSetup.spawnerSo.maxTimeSpawn));
+                GameManager.Instance.poolLogic.GetObject(spawnerSetup.spawnerSo.poolType, locToSpawn);
             }
         }
 

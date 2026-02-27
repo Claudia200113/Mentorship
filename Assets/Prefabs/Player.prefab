@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18e2fa0d4f26e6149abf46198555e57a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gemFX: 5
+  gemFX: 2
   lifeTimeGemFX: 2
 --- !u!1 &4630897851199890323
 GameObject:

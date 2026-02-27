@@ -11,11 +11,11 @@ using UnityEngine;
         public enum PoolType
         {
             Bat,
-            Stalactite,
-            Map,
-            Health,
             Gem,
             GemPickUpFX,
+            Health,
+            Map,
+            Stalactite,
         }
         
         private void Start()
@@ -33,13 +33,13 @@ using UnityEngine;
                 {
                     Queue<GameObject> poolObjectQueue = new Queue<GameObject>();
 
-                    for (int i = 0; i < pool.poolSize; i++)
+                    for (int i = 0; i < pool.poolSo.poolSize; i++)
                     {
-                        GameObject obj = Instantiate(pool.prefab, pool.GOParent);
+                        GameObject obj = Instantiate(pool.poolSo.prefab, pool.GOParent);
                         obj.SetActive(false);
                         poolObjectQueue.Enqueue(obj);
                     }
-                    singlePool.Add(pool.typeOfPool, poolObjectQueue);
+                    singlePool.Add(pool.poolSo.typeOfPool, poolObjectQueue);
                 }
             }
             else

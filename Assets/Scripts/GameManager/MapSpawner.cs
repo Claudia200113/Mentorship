@@ -1,3 +1,4 @@
+using System;
 using A2;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,11 +15,11 @@ namespace A2
         {
             if (collision.CompareTag("SpawnerMap"))
             {
+                
                 GameManager.Instance.poolLogic.GetObject(PoolLogic.PoolType.Map, posSpawn.transform.position);
             }
            else if (collision.CompareTag("MapRequeue"))
            {
-               
                GameManager.Instance.poolLogic.ReturnToQueue(PoolLogic.PoolType.Map, transform.parent.gameObject);
             }
         }
