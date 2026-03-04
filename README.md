@@ -9,8 +9,7 @@ Running we go is an endeless runner where the player needs to survive as long as
 That is right! The player can decide whether to run on the floor or the ceiling so they can try dodging enemies, obstacles, collecting gems and running as far as possible. 
 
 ## Development 
-The game was developed inside Unity by me, Claudia Rodriguez. It was programmed using C# and JetBrains Raiders. All art assets are from third parties and are free to use. While the game is a WIP, the 
-core mechanics can be tested inside the game. The user can load the scene called "Endless Runner" and test the game.
+The game was developed inside Unity by me, Claudia Rodriguez. It was programmed using C# and JetBrains Raiders. All art assets are from third parties and are free to use.
 
 Controls:
   - Movement : *AD or Left / Right arrows*
@@ -24,3 +23,9 @@ Controls:
 - *HUD:* Used to track score, lives and pickups.
 - *Player Inventory:* Tracks pick-ups.
 - *Game Manager:* Created using a Singleton pattern, used to get references and set general aspects such as pools and spawners.
+
+## How to run the game in this state
+While the game is a WIP, the core mechanics can be tested inside the game. The user can load the scene called "Endless Runner" and test the game, no further setup is requiered.
+
+## State of the game
+The game counts with a playable demo and most of the core mechanics are ready. Missing features include: tutorial level, second type of enemies, sound effects and feature to gradually increase level difficulty.
