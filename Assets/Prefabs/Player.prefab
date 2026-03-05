@@ -126,7 +126,7 @@ MonoBehaviour:
   DEBUG: 0
   playerDirection: {x: 0, y: 0}
   playerSpeedForward: 5
-  playerSpeedBackwards: 3
+  playerSpeedBackwards: 4
   jumpForce: 12
   groundLayer:
     serializedVersion: 2
