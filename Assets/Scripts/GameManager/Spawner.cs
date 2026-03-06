@@ -20,7 +20,7 @@ using UnityEngine;
             //Makes sure there are pools set
             if (GameManager.Instance.spawnerSetups.Count == 0)
             {
-                Debug.LogError("Spawners weren't set, needs fixing");
+                Debug.LogWarning("Spawners weren't set");
             }
             else
             {

@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: SO_SpawSet_Bat
   m_EditorClassIdentifier: 
   poolType: 0
-  minTimeSpawn: 3
-  maxTimeSpawn: 8
-  spawnLocation: {fileID: 5530944321762119516, guid: c390ff1527a15784483eeb32a7626689, type: 3}
+  minTimeSpawn: 2
+  maxTimeSpawn: 5

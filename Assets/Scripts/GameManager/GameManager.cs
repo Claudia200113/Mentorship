@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
     public PoolLogic poolLogic;
     public PlayerInventory playerInventory;
     public Spawner spawner;
+    public SceneHandler sceneHandler;
     
     public static GameManager Instance
     {
