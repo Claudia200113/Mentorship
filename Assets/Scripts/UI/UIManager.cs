@@ -14,7 +14,10 @@ namespace UI
         public Sprite emptyHeart;
         public Sprite fullHeart;
         public Image[] hearts;
-        
+
+        [Header("UI Menus")]
+        public GameObject pauseMenu;
+
         public static UIManager Instance
         {
             get;

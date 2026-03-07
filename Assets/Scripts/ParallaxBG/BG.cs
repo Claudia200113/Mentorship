@@ -15,7 +15,7 @@ public class BG : MonoBehaviour
         mat = GetComponent<Renderer>().material;
     }
 
-    void Update()
+    private void LateUpdate()
     {
         distance += Time.deltaTime * speed;
         mat.SetTextureOffset("_MainTex", Vector2.right * distance);

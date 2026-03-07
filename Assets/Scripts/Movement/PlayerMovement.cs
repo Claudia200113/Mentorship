@@ -41,17 +41,17 @@ namespace A2
         }
         void Update()
         {
-            HorizontalMovement();
-            ChangeFloor();
-            Jump();
+            CheckHorizontalMovement();
+            CheckJump();
         }
 
-        private void FixedUpdate()
+        private void LateUpdate()
         {
+            ChangeFloor();
             ProcessInputs();
         }
 
-        private void HorizontalMovement()
+        private void CheckHorizontalMovement()
         {
             float directionX = Input.GetAxis("Horizontal");
             Debug.DrawRay(feetPosition.position, Vector2.down * groundDistanceToJump, Color.red);
@@ -68,7 +68,7 @@ namespace A2
             playerDirection = new Vector2(directionX, 0);   
         }
 
-        private void Jump()
+        private void CheckJump()
         {
             Vector2 groundCheck = isInverted ? Vector2.up : Vector2.down;
             isGrounded = Physics2D.Raycast(feetPosition.position, groundCheck, groundDistanceToJump, groundLayer);

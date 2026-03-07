@@ -61,7 +61,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DEBUG: 0
   horizontalSpeed: 0
-  destroyAfterSeconds: 5
+  destroyAfterSeconds: 10
   poolType: 5
 --- !u!1 &7538605438807256935
 GameObject:

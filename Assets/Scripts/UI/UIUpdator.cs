@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 namespace UI
@@ -5,12 +6,21 @@ namespace UI
     public class UIUpdator : MonoBehaviour
     {
         private float score;
+        public bool GamePaused = false;
+
+        void Start()
+        {
+            Time.timeScale = 1;
+            GamePaused = false;
+        }
 
         private void Update()
         {
             SetScore();
             SetGems();
             UpdateHearts();
+            HandlePause();
+
         }
 
         private void SetScore()
@@ -42,8 +52,37 @@ namespace UI
                 }
             }
         }
-    
-    
+
+        void HandlePause()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                if (GamePaused)
+                {
+                    Resume();
+                }
+                else
+                {
+                    Pause();
+                }
+            }
+        }
+
+        private void Resume()
+        {
+            UIManager.Instance.pauseMenu.SetActive(false);
+            Time.timeScale = 1;
+            GamePaused = false;
+        }
+
+        private void Pause()
+        {
+            UIManager.Instance.pauseMenu.SetActive(true);
+            Time.timeScale = 0;
+            GamePaused = true;
+        }
+
+
     }
 }
 

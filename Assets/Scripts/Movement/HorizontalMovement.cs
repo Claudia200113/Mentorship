@@ -11,7 +11,7 @@ namespace A2
         [SerializeField] private float destroyAfterSeconds = 5f;
         [SerializeField] private PoolLogic.PoolType poolType;
         
-        private new Rigidbody2D rigidbody;
+        private Rigidbody2D rigidbody;
 
         private void Start()
         {
@@ -44,6 +44,12 @@ namespace A2
         private void OnCollisionEnter2D(Collision2D collision)
         {
             ReturnToQueue();
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            ReturnToQueue();
+
         }
 
         private void ReturnToQueue()

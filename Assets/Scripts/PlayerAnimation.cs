@@ -1,12 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
 
-namespace A2
-{
-
-    [RequireComponent(typeof(Animator))]
     public class PlayerAnimation : MonoBehaviour
     {
         private float moveInput;
@@ -49,4 +44,3 @@ namespace A2
             }
         }
     }
-}

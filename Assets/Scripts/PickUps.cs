@@ -8,16 +8,16 @@ public class PickUps : MonoBehaviour
    [SerializeField] private PoolLogic.PoolType gemFX;
    [SerializeField] private float lifeTimeGemFX = 2f;
    
-   
-   private void OnCollisionEnter2D(Collision2D collision)
-   {
-      if (collision.gameObject.CompareTag("Gem"))
-      {
-         GameManager.Instance.playerInventory.AddGem();
-         StartCoroutine(GameManager.Instance.spawner.SingleSpawn(
-            gemFX, 
-            collision.transform.position, 
-            lifeTimeGemFX));
-      }
-   }
+  
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Gem"))
+        {
+            GameManager.Instance.playerInventory.AddGem();
+            StartCoroutine(GameManager.Instance.spawner.SingleSpawn(
+               gemFX,
+               collision.transform.position,
+               lifeTimeGemFX));
+        }
+    }
 }

@@ -9,7 +9,7 @@ using UnityEngine;
         public bool DEBUG;
         public int healthGained = 5;
 
-        private new CircleCollider2D collider;
+        private CircleCollider2D collider;
         private SpriteRenderer spriteRenderer;
         void Start()
         {
