@@ -20,7 +20,7 @@ using UnityEngine;
             //Makes sure there are pools set
             if (GameManager.Instance.spawnerSetups.Count == 0)
             {
-                Debug.LogError("Spawners weren't set, needs fixing");
+                Debug.LogWarning("Spawners weren't set");
             }
             else
             {
@@ -39,13 +39,21 @@ using UnityEngine;
             {
                 if (DEBUG)
                 {
-                    Debug.Log("SPAWNER: Instancing a new prefab type:" + spawnerSetup.poolType);
+                    Debug.Log("SPAWNER: Instancing a new prefab type:" + spawnerSetup.spawnerSo.poolType);
                 }
 
                 Vector3 locToSpawn = spawnerSetup.spawnLocation.localPosition;
-                yield return new WaitForSeconds(Random.Range(spawnerSetup.minTimeSpawn, spawnerSetup.maxTimeSpawn));
-                PoolLogic.Instance.GetObject(spawnerSetup.poolType, locToSpawn);
+                yield return new WaitForSeconds(Random.Range(spawnerSetup.spawnerSo.minTimeSpawn, spawnerSetup.spawnerSo.maxTimeSpawn));
+                GameManager.Instance.poolLogic.GetObject(spawnerSetup.spawnerSo.poolType, locToSpawn);
             }
+        }
+
+        public IEnumerator SingleSpawn(PoolLogic.PoolType poolType, Vector3 locToSpawn, float lifeTime)
+        { 
+            var pool = GameManager.Instance.poolLogic;
+           GameObject prefabSpawned = pool.GetObject(poolType, locToSpawn);
+           yield return new WaitForSeconds(lifeTime);
+           pool.ReturnToQueue(poolType, prefabSpawned);
         }
     }
 

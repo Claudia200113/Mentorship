@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 3240724794848041020}
   - component: {fileID: 7874105660897060233}
   - component: {fileID: 6901218721879902241}
+  - component: {fileID: 3264920215467114387}
+  - component: {fileID: 7150321853590351704}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -122,17 +124,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DEBUG: 0
-  rigidBody: {fileID: 0}
   playerDirection: {x: 0, y: 0}
   playerSpeedForward: 5
-  playerSpeedBackwards: 2.5
-  jumpForce: 15
+  playerSpeedBackwards: 4
+  jumpForce: 12
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   groundDistanceToJump: 0.3
   isGrounded: 0
-  feetPosition: {fileID: 0}
+  feetPosition: {fileID: 5774774002662705288}
 --- !u!114 &6901218721879902241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,8 +147,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DEBUG: 0
-  currentHP: 0
+  currentHp: 0
   timeDamageArt: 0.3
+  maxHp: 100
+--- !u!114 &3264920215467114387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4603725219857368154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4c5f9ffecfaefa4cb0a9d590129b883, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberGems: 0
+--- !u!114 &7150321853590351704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4603725219857368154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18e2fa0d4f26e6149abf46198555e57a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gemFX: 2
+  lifeTimeGemFX: 2
 --- !u!1 &4630897851199890323
 GameObject:
   m_ObjectHideFlags: 0

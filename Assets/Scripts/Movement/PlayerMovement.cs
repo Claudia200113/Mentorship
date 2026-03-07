@@ -20,8 +20,6 @@ namespace A2
         public      float           playerSpeedBackwards = 1.5f;
         private     bool            playerGoingBackwards;
         private     float           normalGravity;
-        private     float           fallingGravity;
-        private     float           scalingGravityFactor = 1f;
 
 
         [Header("Jump variables")]
@@ -31,6 +29,7 @@ namespace A2
         [HideInInspector]
         public      bool            isGrounded;
         private     bool            isJumping;
+        private     bool            isInverted;
         public      Transform       feetPosition;
 
 
@@ -39,23 +38,24 @@ namespace A2
             rigidBody = GetComponent<Rigidbody2D>();
             spriteRenderer = GetComponentInChildren<SpriteRenderer>();
             normalGravity = rigidBody.gravityScale;
-            fallingGravity = normalGravity + scalingGravityFactor;
         }
         void Update()
         {
-            ListenForInputs();
+            CheckHorizontalMovement();
+            CheckJump();
         }
 
-        private void FixedUpdate()
+        private void LateUpdate()
         {
+            ChangeFloor();
             ProcessInputs();
         }
 
-        private void ListenForInputs()
+        private void CheckHorizontalMovement()
         {
-            isGrounded = Physics2D.Raycast(feetPosition.position, Vector2.down, groundDistanceToJump, groundLayer);
             float directionX = Input.GetAxis("Horizontal");
-
+            Debug.DrawRay(feetPosition.position, Vector2.down * groundDistanceToJump, Color.red);
+            
             if (directionX < 0)
             {
                 playerGoingBackwards = true;
@@ -65,11 +65,26 @@ namespace A2
                 playerGoingBackwards = false;
             }
 
-            playerDirection = new Vector2(directionX, 0);
+            playerDirection = new Vector2(directionX, 0);   
+        }
 
-            if (isGrounded && Input.GetKeyDown(KeyCode.Space))
+        private void CheckJump()
+        {
+            Vector2 groundCheck = isInverted ? Vector2.up : Vector2.down;
+            isGrounded = Physics2D.Raycast(feetPosition.position, groundCheck, groundDistanceToJump, groundLayer);
+            
+            if (isGrounded && (Input.GetButtonDown("Jump") || Input.GetButtonDown("Vertical")))
             {
                 isJumping = true;
+            }
+        }
+        private void ChangeFloor()
+        {
+            if (Input.GetKeyDown(KeyCode.R) && isGrounded)
+            {
+                isInverted = !isInverted;
+                rigidBody.gravityScale = isInverted ? normalGravity * -1: normalGravity;
+                gameObject.transform.Rotate(180f, 0f, 0f, Space.World);
             }
         }
 
@@ -86,6 +101,7 @@ namespace A2
 
                 rigidBody.velocity = new Vector2(playerDirection.x * playerSpeedBackwards, currentVelocity.y);
                 spriteRenderer.flipX = true;
+                //gameObject.transform.Rotate(0f, 180f, 0f, Space.World);
             }
             else 
             {
@@ -96,6 +112,7 @@ namespace A2
 
                 rigidBody.velocity = new Vector2(playerDirection.x * playerSpeedForward, currentVelocity.y);
                 spriteRenderer.flipX = false;
+                //gameObject.transform.Rotate(0f, 0f, 0f, Space.World);
             }
 
             if (isJumping)
@@ -104,22 +121,10 @@ namespace A2
                 {
                     Debug.Log("PLAYER: Player is jumping");
                 }
-
-                rigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                
+                Vector2 jumpingVector = isInverted ? Vector2.down : Vector2.up;
+                rigidBody.AddForce(jumpingVector * jumpForce, ForceMode2D.Impulse);
                 isJumping = false;
-            }
-
-            if (rigidBody.velocity.y < 0)
-            {
-                rigidBody.gravityScale = fallingGravity;
-            }
-            else if (rigidBody.velocity.y >= 0) 
-            {
-                rigidBody.gravityScale = normalGravity;
-            }
-            if (DEBUG)
-            {
-                Debug.DrawRay(transform.position, rigidBody.velocity, Color.red);
             }
         }
 

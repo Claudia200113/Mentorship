@@ -5,18 +5,39 @@ using UnityEngine;
 //Singleton type
 public class GameManager : MonoBehaviour
 {
+    //List for pools--------------------------------------------
+    [Header("Pools")]
+    public List<Pool> poolsList;
+    
+    [System.Serializable]
+    public class Pool
+    {
+        public SO_PoolSetup poolSo;
+        public Transform GOParent;
+    }
+    
+    //-----------------------------------------------------------
+    
     //List for spawners-----------------------------------------------------------
+    [Header("Spawners")]
     public List<SpawnerSetup> spawnerSetups;
-
+    
     [System.Serializable] 
     public class SpawnerSetup
     {
-        public PoolLogic.PoolType poolType;
-        public float minTimeSpawn;
-        public float maxTimeSpawn;
+        public SO_SpawerSetup spawnerSo;
         public Transform spawnLocation;
     }
+    
     //----------------------------------------------------------------------------
+    
+    [Header("References")]
+    public Health playerHealth;
+    public PoolLogic poolLogic;
+    public PlayerInventory playerInventory;
+    public Spawner spawner;
+    public SceneHandler sceneHandler;
+    
     public static GameManager Instance
     {
         get;
