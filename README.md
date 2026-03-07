@@ -20,12 +20,12 @@ Controls:
 ## Game Features
 - *Generic pool system:* Used for enemies, map, VFX, pick-ups pool creation. 
 - *Scriptable Objects:* SO used to set pools and spawners, creating cleaner code and ease changes.
-- *HUD:* Used to track score, lives and pickups.
+- *HUD:* Used to track score, lives and pickups. Uses a UI reference script of type singelton to set references and a UI updator that using the set references updates the game. 
 - *Player Inventory:* Tracks pick-ups.
 - *Game Manager:* Created using a Singleton pattern, used to get references and set general aspects such as pools and spawners.
 
 ## How to run the game in this state
-While the game is a WIP, the core mechanics can be tested inside the game. The user can load the scene called "Endless Runner" and test the game, no further setup is requiered.
+To run the game the user can either run the scene called "Menu" or directly the "EndlessRunner" scene. No further set up is needed. 
 
 ## State of the game
-The game counts with a playable demo and most of the core mechanics are ready. Missing features include: tutorial level, second type of enemies, sound effects and feature to gradually increase level difficulty.
+The game counts with a playable demo and most of the core mechanics are ready. Missing features include: a second type of enemies, sound effects and features to gradually increase level difficulty.
