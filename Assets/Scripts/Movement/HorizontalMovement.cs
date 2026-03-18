@@ -1,8 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace A2
-{
+
     public class HorizontalMovement : MonoBehaviour
     {
         public bool DEBUG;
@@ -57,4 +56,4 @@ namespace A2
             GameManager.Instance.poolLogic.ReturnToQueue(poolType, gameObject);
         }
     }
-}
+

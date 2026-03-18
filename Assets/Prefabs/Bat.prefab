@@ -175,7 +175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DEBUG: 0
   horizontalSpeed: 10
-  destroyAfterSeconds: 10
+  destroyAfterSeconds: 12
   poolType: 0
 --- !u!114 &7015512681366780581
 MonoBehaviour:
