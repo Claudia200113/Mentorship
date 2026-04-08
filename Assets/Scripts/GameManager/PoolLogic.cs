@@ -16,6 +16,7 @@ using UnityEngine;
             Health,
             Map,
             Stalactite,
+            Warrior,
         }
         
         private void Start()

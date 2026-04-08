@@ -13,11 +13,17 @@ public class PickUps : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Gem"))
         {
-            GameManager.Instance.playerInventory.AddGem();
-            StartCoroutine(GameManager.Instance.spawner.SingleSpawn(
-               gemFX,
-               collision.transform.position,
-               lifeTimeGemFX));
+            PickUpGem(collision);
         }
+    }
+
+    private void PickUpGem(Collider2D collision)
+    {
+        GameManager.Instance.playerInventory.AddGem();
+        StartCoroutine(GameManager.Instance.spawner.SingleSpawn(
+            gemFX,
+            collision.transform.position,
+            lifeTimeGemFX));
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.gem);
     }
 }

@@ -10,11 +10,8 @@ using UnityEngine;
         [SerializeField] private float destroyAfterSeconds = 5f;
         [SerializeField] private PoolLogic.PoolType poolType;
         
-        private Rigidbody2D rigidbody;
-
         private void Start()
         {
-            rigidbody = GetComponent<Rigidbody2D>();
             StartCoroutine(ReturnToQueueTime());
         }
         private void Update()
@@ -42,13 +39,13 @@ using UnityEngine;
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.damage);
             ReturnToQueue();
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            ReturnToQueue();
-
+            if (collision.CompareTag("TriggerRequeue")) ReturnToQueue();
         }
 
         private void ReturnToQueue()

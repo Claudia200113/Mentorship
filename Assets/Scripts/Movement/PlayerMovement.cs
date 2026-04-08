@@ -121,19 +121,10 @@ namespace A2
                 {
                     Debug.Log("PLAYER: Player is jumping");
                 }
-                
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.jump);
                 Vector2 jumpingVector = isInverted ? Vector2.down : Vector2.up;
                 rigidBody.AddForce(jumpingVector * jumpForce, ForceMode2D.Impulse);
                 isJumping = false;
-            }
-        }
-
-        private void OnDrawGizmos()
-        {
-            if (DEBUG)
-            {
-                Gizmos.color = new Color(.165f, .824f, .871f, .5f);
-                Gizmos.DrawSphere(feetPosition.position, groundDistanceToJump);
             }
         }
     }
