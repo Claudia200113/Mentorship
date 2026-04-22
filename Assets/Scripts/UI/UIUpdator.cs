@@ -8,6 +8,17 @@ namespace UI
         private float score;
         public bool GamePaused = false;
 
+        void OnEnable()
+        {
+        
+            Health.OnPlayerDeath += GameOver; 
+        }
+
+        void OnDisable()
+        {
+            Health.OnPlayerDeath -= GameOver;
+        }
+
         void Start()
         {
             Time.timeScale = 1;
@@ -25,7 +36,14 @@ namespace UI
 
         private void SetScore()
         {
-            score+= 1 * Time.deltaTime;
+            if (GameManager.Instance.playerHealth.dead)
+            {
+                score+= 1 * Time.deltaTime;
+            }
+            else
+            {
+                score += 0;
+            }
             UIManager.Instance.scoreText.text = "Score: " + (int)score;
         }
 
@@ -82,6 +100,11 @@ namespace UI
             GamePaused = true;
         }
 
+        void GameOver()
+        {
+            UIManager.Instance.gameOverMenu.SetActive(false);
+            UIManager.Instance.gameOverText.text = "Final Score: " + (int)score + " and gems: " + GameManager.Instance.playerInventory.numberGems;
+        }
 
     }
 }

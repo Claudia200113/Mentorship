@@ -1,8 +1,10 @@
+using System;
 using A2;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
 using System.Runtime.CompilerServices;
+using UI;
 using UnityEngine;
 
     public class Health : MonoBehaviour
@@ -14,9 +16,10 @@ using UnityEngine;
         public float maxHp = 100f;
         private float counterDamage = 0;
         private bool damageTaken = false;
-        [HideInInspector]
-        private bool dead = false;
+        public bool dead = false;
         private SpriteRenderer spriteRenderer;
+        
+        public static event Action OnPlayerDeath;
 
         private void Awake()
         {
@@ -31,7 +34,7 @@ using UnityEngine;
             UpdateDamageArt();
         }
 
-        public bool TakeDamage(float damage)
+        public void TakeDamage(float damage)
         {
             currentHp -= damage;
             counterDamage = 0;
@@ -44,7 +47,6 @@ using UnityEngine;
                     Debug.Log("HEALTH: " + gameObject.name + " was damaged, life now at " + currentHp);
                 }
 
-                dead = false;
 
             }
             else if (currentHp <= 0) //If health goes less than 0, DeathFromDamage is called 
@@ -54,41 +56,24 @@ using UnityEngine;
                     Debug.Log("HEALTH:" + gameObject.name + " no life points left, calling DeathFromDamage()");
                 }
 
-                dead = true;
                 DeathFromDamage();
             }
-            //Returns the flag
-            return dead;
         }
 
         private void DeathFromDamage()
         {
-            //gameObject.SetActive(false);
-            GameManager.Instance.sceneHandler.GoToGameOver();
-            if (DEBUG)
-            {
-                Debug.Log("HEALTH: " + gameObject.name + " died from damage, gameObject deactivated");
-            }
+            dead = true;
+            OnPlayerDeath?.Invoke();
         }
 
         public void GainHealth(int health)
         {
-            if (currentHp > 100)
-            {
-                if (DEBUG)
-                {
-                    Debug.Log("HEALTH:" + gameObject.name + " health´s is 100, can't add more");
-                }
-                else if (currentHp < 100)
+            
+                if (currentHp < 100)
                 {
                     currentHp += health;
-                    if (DEBUG)
-                    {
-                        Debug.Log(
-                            "HEALTH:" + gameObject.name + " gained " + health + ", now health is at: " + currentHp);
-                    }
                 }
-            }
+            
         }
 
         private void UpdateDamageArt()

@@ -38,6 +38,10 @@ public class GameManager : MonoBehaviour
     public Spawner spawner;
     public SceneHandler sceneHandler;
     
+    [Header("References")]
+    [HideInInspector] public float globalSpeed;
+    public float maxSpeed = 30;
+    public float acceleration = .5f;
     public static GameManager Instance
     {
         get;
@@ -53,6 +57,20 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
         }
+    }
+    
+    private void Update()
+    {
+        AccelerationSet();
+    }
+
+    private void AccelerationSet()
+    {
+        if (globalSpeed < maxSpeed)
+        {
+            globalSpeed += acceleration * Time.deltaTime;
+        }
+
     }
     
 }

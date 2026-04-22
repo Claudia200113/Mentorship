@@ -19,7 +19,7 @@ namespace A2
 
         private void MoveMap()
         {
-            globalSpeed = AccelerationController.Instance.globalSpeed;
+            globalSpeed = GameManager.Instance.globalSpeed;
             transform.Translate(-globalSpeed * Time.deltaTime, 0, 0);
         }
     }

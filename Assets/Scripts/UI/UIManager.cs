@@ -9,6 +9,7 @@ namespace UI
         [Header("UI Text")] 
         public TextMeshProUGUI scoreText;
         public TextMeshProUGUI gemsText;
+        public TextMeshProUGUI gameOverText;
         
         [Header("Hearts Sprites")]
         public Sprite emptyHeart;
@@ -17,6 +18,7 @@ namespace UI
 
         [Header("UI Menus")]
         public GameObject pauseMenu;
+        public GameObject gameOverMenu;
 
         public static UIManager Instance
         {
