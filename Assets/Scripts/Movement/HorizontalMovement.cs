@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -10,10 +11,13 @@ using UnityEngine;
         [SerializeField] private float destroyAfterSeconds = 5f;
         [SerializeField] private PoolLogic.PoolType poolType;
         
-        private void Start()
+        private AudioSource audioSource;
+        
+        private void Awake()
         {
             StartCoroutine(ReturnToQueueTime());
         }
+
         private void Update()
         {
             if (DEBUG)
@@ -29,6 +33,7 @@ using UnityEngine;
         private void Move()
         { 
             transform.Translate(-horizontalSpeed * Time.deltaTime, 0, 0);
+            
         }
 
         IEnumerator ReturnToQueueTime()

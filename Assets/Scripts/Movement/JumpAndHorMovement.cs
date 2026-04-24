@@ -9,10 +9,20 @@ public class JumpAndHorMovement : MonoBehaviour
     [SerializeField] private float jumpForce;
     [SerializeField] private float horizontalVelocity;
     private      Rigidbody2D     rigidBody;
+    private AudioSource audioSource;
     
+    private void OnEnable()
+    {
+        audioSource.Play();
+    }
 
+    private void OnDisable()
+    {
+        audioSource.Stop();
+    }
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         rigidBody = GetComponent<Rigidbody2D>();
     }
     private void Start()

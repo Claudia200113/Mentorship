@@ -39,7 +39,8 @@ using UnityEngine;
             currentHp -= damage;
             counterDamage = 0;
             damageTaken = true;
-
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.damage);
+            
             if (currentHp > 0)
             {
                 if (DEBUG)
@@ -63,6 +64,7 @@ using UnityEngine;
         private void DeathFromDamage()
         {
             dead = true;
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.death);
             OnPlayerDeath?.Invoke();
         }
 
