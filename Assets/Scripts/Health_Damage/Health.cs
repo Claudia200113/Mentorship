@@ -41,23 +41,9 @@ using UnityEngine;
             damageTaken = true;
             AudioManager.Instance.PlaySFX(AudioManager.Instance.damage);
             
-            if (currentHp > 0)
+            if (currentHp <= 0) //If health goes less than 0, DeathFromDamage is called 
             {
-                if (DEBUG)
-                {
-                    Debug.Log("HEALTH: " + gameObject.name + " was damaged, life now at " + currentHp);
-                }
-
-
-            }
-            else if (currentHp <= 0) //If health goes less than 0, DeathFromDamage is called 
-            {
-                if (DEBUG)
-                {
-                    Debug.Log("HEALTH:" + gameObject.name + " no life points left, calling DeathFromDamage()");
-                }
-
-                DeathFromDamage();
+              DeathFromDamage();
             }
         }
 
@@ -66,6 +52,7 @@ using UnityEngine;
             dead = true;
             AudioManager.Instance.PlaySFX(AudioManager.Instance.death);
             OnPlayerDeath?.Invoke();
+            GameManager.Instance.playerPrefab.SetActive(false);
         }
 
         public void GainHealth(int health)

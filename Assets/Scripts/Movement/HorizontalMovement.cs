@@ -44,13 +44,15 @@ using UnityEngine;
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            AudioManager.Instance.PlaySFX(AudioManager.Instance.damage);
             ReturnToQueue();
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.CompareTag("TriggerRequeue")) ReturnToQueue();
+            if (collision.CompareTag("TriggerRequeue") || collision.CompareTag("Player"))
+            {
+                ReturnToQueue();
+            }
         }
 
         private void ReturnToQueue()

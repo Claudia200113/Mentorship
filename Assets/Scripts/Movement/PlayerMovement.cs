@@ -31,8 +31,8 @@ namespace A2
         private     bool            isJumping;
         private     bool            isInverted;
         public      Transform       feetPosition;
-
-
+        
+        
         private void Awake()
         {
             rigidBody = GetComponent<Rigidbody2D>();

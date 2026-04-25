@@ -102,7 +102,9 @@ namespace UI
 
         void GameOver()
         {
-            UIManager.Instance.gameOverMenu.SetActive(false);
+            Debug.Log("Game Over");
+            UIManager.Instance.gameUI.SetActive(false);
+            UIManager.Instance.gameOverMenu.SetActive(true);
             UIManager.Instance.gameOverText.text = "Final Score: " + (int)score + " and gems: " + GameManager.Instance.playerInventory.numberGems;
         }
 

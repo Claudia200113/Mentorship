@@ -19,6 +19,7 @@ namespace UI
         [Header("UI Menus")]
         public GameObject pauseMenu;
         public GameObject gameOverMenu;
+        public GameObject gameUI;
 
         public static UIManager Instance
         {

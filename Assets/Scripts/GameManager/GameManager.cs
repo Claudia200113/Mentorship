@@ -32,16 +32,17 @@ public class GameManager : MonoBehaviour
     //----------------------------------------------------------------------------
     
     [Header("References")]
+    public GameObject playerPrefab;
     public Health playerHealth;
     public PoolLogic poolLogic;
     public PlayerInventory playerInventory;
     public Spawner spawner;
     public SceneHandler sceneHandler;
     
-    [Header("References")]
+    [Header("Global Speed")]
     [HideInInspector] public float globalSpeed;
-    public float maxSpeed = 30;
-    public float acceleration = .5f;
+    public float maxSpeed = 45;
+    public float acceleration = .2f;
     public static GameManager Instance
     {
         get;
