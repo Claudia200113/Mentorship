@@ -5,7 +5,6 @@ namespace UI
 {
     public class UIUpdator : MonoBehaviour
     {
-        private float score;
         public bool GamePaused = false;
 
         void OnEnable()
@@ -36,15 +35,7 @@ namespace UI
 
         private void SetScore()
         {
-            if (GameManager.Instance.playerHealth.dead)
-            {
-                score+= 1 * Time.deltaTime;
-            }
-            else
-            {
-                score += 0;
-            }
-            UIManager.Instance.scoreText.text = "Score: " + (int)score;
+            UIManager.Instance.scoreText.text = "Score: " + (int)GameManager.Instance.score;
         }
 
         private void SetGems()
@@ -105,7 +96,7 @@ namespace UI
             Debug.Log("Game Over");
             UIManager.Instance.gameUI.SetActive(false);
             UIManager.Instance.gameOverMenu.SetActive(true);
-            UIManager.Instance.gameOverText.text = "Final Score: " + (int)score + " and gems: " + GameManager.Instance.playerInventory.numberGems;
+            UIManager.Instance.gameOverText.text = "Final Score: " + (int)GameManager.Instance.score + " Gems: " + GameManager.Instance.playerInventory.numberGems;
         }
 
     }

@@ -175,10 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ec3abb9f94f7e6499ae5e7a4f9a8cd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DEBUG: 0
-  horizontalSpeed: -10
-  destroyAfterSeconds: 12
-  poolType: 0
+  poolType: 6
 --- !u!114 &639331452799593114
 MonoBehaviour:
   m_ObjectHideFlags: 0

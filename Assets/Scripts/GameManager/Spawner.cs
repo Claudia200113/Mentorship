@@ -10,29 +10,23 @@ using UnityEngine;
 
         void Start()
         {
-            //Checks each pool to spawn the object according to a random interval of time
             goThroughPools();
         }
-
-        //Checks that spawnersetup is greater than 1, if so, will go through the list and spawn the items. 
+        
         private void goThroughPools()
         {
-            //Makes sure there are pools set
             if (GameManager.Instance.spawnerSetups.Count == 0)
             {
                 Debug.LogWarning("Spawners weren't set");
             }
             else
             {
-                //Go through each pool existing and spawn the objects
                 foreach (var pool in GameManager.Instance.spawnerSetups)
                 {
                     StartCoroutine(SpawnObjects(pool));
                 }
             }
         }
-        // Spawns the object by calling the pool script. First sets the location to the given one in the inspector, sets the spawning
-        //time between the variables given in inspector, and finally calls the pool script to get the object from the corresponding pool.
         IEnumerator SpawnObjects(GameManager.SpawnerSetup spawnerSetup)
         {
             while (true)

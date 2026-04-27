@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b9d4d31f984cb44abc52497815fb22b, type: 3}
-  m_Name: SO_PoolSetup_Bat
+  m_Script: {fileID: 11500000, guid: 385a1985428bb0649a6a4161b144dd1b, type: 3}
+  m_Name: SO_SpawSet_BatUp
   m_EditorClassIdentifier: 
-  typeOfPool: 0
-  prefab: {fileID: 1723108079959328096, guid: a411245d895206f47b1bc42fc3e2a764, type: 3}
-  poolSize: 25
+  poolType: 0
+  minTimeSpawn: 3
+  maxTimeSpawn: 6

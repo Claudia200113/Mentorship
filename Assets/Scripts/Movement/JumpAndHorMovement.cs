@@ -7,13 +7,11 @@ public class JumpAndHorMovement : MonoBehaviour
 {
     [SerializeField] private float timeBetweenJumps = 3;
     [SerializeField] private float jumpForce;
-    [SerializeField] private float horizontalVelocity;
     private      Rigidbody2D     rigidBody;
     private AudioSource audioSource;
     
     private void OnEnable()
     {
-        audioSource.Play();
     }
 
     private void OnDisable()

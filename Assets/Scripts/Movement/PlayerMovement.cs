@@ -25,7 +25,7 @@ namespace A2
         [Header("Jump variables")]
         public      float           jumpForce = 5f;
         public      LayerMask       groundLayer;
-        public      float           groundDistanceToJump = 0.3f;
+        public      float           groundDistanceToJump = 0.2f;
         [HideInInspector]
         public      bool            isGrounded;
         private     bool            isJumping;
@@ -101,7 +101,6 @@ namespace A2
 
                 rigidBody.velocity = new Vector2(playerDirection.x * playerSpeedBackwards, currentVelocity.y);
                 spriteRenderer.flipX = true;
-                //gameObject.transform.Rotate(0f, 180f, 0f, Space.World);
             }
             else 
             {
@@ -112,7 +111,6 @@ namespace A2
 
                 rigidBody.velocity = new Vector2(playerDirection.x * playerSpeedForward, currentVelocity.y);
                 spriteRenderer.flipX = false;
-                //gameObject.transform.Rotate(0f, 0f, 0f, Space.World);
             }
 
             if (isJumping)

@@ -24,6 +24,8 @@ public class PickUps : MonoBehaviour
             gemFX,
             collision.transform.position,
             lifeTimeGemFX));
+
+        GameManager.Instance.score += 50;
         
         AudioManager.Instance.PlaySFX(AudioManager.Instance.gem);
     }

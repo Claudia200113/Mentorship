@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 //Singleton type
 public class GameManager : MonoBehaviour
@@ -37,12 +38,13 @@ public class GameManager : MonoBehaviour
     public PoolLogic poolLogic;
     public PlayerInventory playerInventory;
     public Spawner spawner;
-    public SceneHandler sceneHandler;
-    
+
     [Header("Global Speed")]
+    [SerializeField] private AnimationCurve speedCurve; 
     [HideInInspector] public float globalSpeed;
-    public float maxSpeed = 45;
-    public float acceleration = .2f;
+    
+    [Header("Score")]
+    public float score;
     public static GameManager Instance
     {
         get;
@@ -62,16 +64,13 @@ public class GameManager : MonoBehaviour
     
     private void Update()
     {
+        score += Time.deltaTime;
         AccelerationSet();
     }
 
     private void AccelerationSet()
     {
-        if (globalSpeed < maxSpeed)
-        {
-            globalSpeed += acceleration * Time.deltaTime;
-        }
-
+       globalSpeed = speedCurve.Evaluate(score);
     }
     
 }
