@@ -93,10 +93,10 @@ namespace UI
 
         void GameOver()
         {
-            Debug.Log("Game Over");
+            var finalScore = (int)GameManager.Instance.score + (10 * GameManager.Instance.playerInventory.numberGems);
             UIManager.Instance.gameUI.SetActive(false);
             UIManager.Instance.gameOverMenu.SetActive(true);
-            UIManager.Instance.gameOverText.text = "Final Score: " + (int)GameManager.Instance.score + " Gems: " + GameManager.Instance.playerInventory.numberGems;
+            UIManager.Instance.gameOverText.text = "Score: " + (int)GameManager.Instance.score + " Gems: " + GameManager.Instance.playerInventory.numberGems + "\nFinal Score: " + finalScore;
         }
 
     }
