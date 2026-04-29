@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolType: 0
   minTimeSpawn: 3
-  maxTimeSpawn: 6
+  maxTimeSpawn: 4

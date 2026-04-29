@@ -10,6 +10,7 @@ namespace UI
         public TextMeshProUGUI scoreText;
         public TextMeshProUGUI gemsText;
         public TextMeshProUGUI gameOverText;
+        public TextMeshProUGUI hiScoreText;
         
         [Header("Hearts Sprites")]
         public Sprite emptyHeart;

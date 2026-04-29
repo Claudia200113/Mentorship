@@ -38,13 +38,12 @@ public class GameManager : MonoBehaviour
     public PoolLogic poolLogic;
     public PlayerInventory playerInventory;
     public Spawner spawner;
+    public ScoreManager scoreManager;
 
     [Header("Global Speed")]
     [SerializeField] private AnimationCurve speedCurve; 
     [HideInInspector] public float globalSpeed;
     
-    [Header("Score")]
-    public float score;
     public static GameManager Instance
     {
         get;
@@ -61,16 +60,14 @@ public class GameManager : MonoBehaviour
             Instance = this;
         }
     }
-    
+
     private void Update()
     {
-        score += Time.deltaTime;
         AccelerationSet();
     }
-
     private void AccelerationSet()
     {
-       globalSpeed = speedCurve.Evaluate(score);
+       globalSpeed = speedCurve.Evaluate(scoreManager.currentScore);
     }
     
 }

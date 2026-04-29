@@ -9,7 +9,6 @@ namespace UI
 
         void OnEnable()
         {
-        
             Health.OnPlayerDeath += GameOver; 
         }
 
@@ -35,7 +34,7 @@ namespace UI
 
         private void SetScore()
         {
-            UIManager.Instance.scoreText.text = "Score: " + (int)GameManager.Instance.score;
+            UIManager.Instance.scoreText.text = "Score: " + (int)GameManager.Instance.scoreManager.currentScore;
         }
 
         private void SetGems()
@@ -93,12 +92,12 @@ namespace UI
 
         void GameOver()
         {
-            var finalScore = (int)GameManager.Instance.score + (10 * GameManager.Instance.playerInventory.numberGems);
             UIManager.Instance.gameUI.SetActive(false);
             UIManager.Instance.gameOverMenu.SetActive(true);
-            UIManager.Instance.gameOverText.text = "Score: " + (int)GameManager.Instance.score + " Gems: " + GameManager.Instance.playerInventory.numberGems + "\nFinal Score: " + finalScore;
+            UIManager.Instance.gameOverText.text = "Score: " + (int)GameManager.Instance.scoreManager.currentScore + " Gems: " + GameManager.Instance.playerInventory.numberGems + "\nFinal Score: " + (int)GameManager.Instance.scoreManager.finalScore;
+            UIManager.Instance.hiScoreText.text = "Record: " + (int)PlayerPrefs.GetFloat("SavedHighScore");
         }
-
+        
     }
 }
 
