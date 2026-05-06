@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -92,11 +94,14 @@ namespace UI
 
         void GameOver()
         {
-            UIManager.Instance.gameUI.SetActive(false);
-            UIManager.Instance.gameOverMenu.SetActive(true);
-            UIManager.Instance.gameOverText.text = "Score: " + (int)GameManager.Instance.scoreManager.currentScore + " Gems: " + GameManager.Instance.playerInventory.numberGems + "\nFinal Score: " + (int)GameManager.Instance.scoreManager.finalScore;
-            UIManager.Instance.hiScoreText.text = "Record: " + (int)PlayerPrefs.GetFloat("SavedHighScore");
+            GameManager.Instance.scoreManager.SetHighScore();
+            UIManager.Instance.gameUI.SetActive(false); 
+            UIManager.Instance.gameOverMenu.SetActive(true); 
+            UIManager.Instance.gameOverText.text = "Score: " + (int)GameManager.Instance.scoreManager.currentScore + " Gems: " + GameManager.Instance.playerInventory.numberGems + "\nFinal Score: " + (int)GameManager.Instance.scoreManager.finalScore; 
+            UIManager.Instance.hiScoreText.text = "Record: " + PlayerPrefs.GetInt("SavedHighScore");
+
         }
+
         
     }
 }

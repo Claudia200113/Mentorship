@@ -9,7 +9,7 @@ public class AudioManager : MonoBehaviour
    [SerializeField] private AudioSource SFXSource;
 
    [Header("Audio Clip")] public AudioClip background;
-   public AudioClip death, jump, gem, damage, warrior, bat;
+   public AudioClip death, jump, gem, damage, landing;
 
    public static AudioManager Instance
    {

@@ -73,7 +73,7 @@ namespace A2
             Vector2 groundCheck = isInverted ? Vector2.up : Vector2.down;
             isGrounded = Physics2D.Raycast(feetPosition.position, groundCheck, groundDistanceToJump, groundLayer);
             
-            if (isGrounded && (Input.GetButtonDown("Jump") || Input.GetButtonDown("Vertical")))
+            if (isGrounded && (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.UpArrow)))
             {
                 isJumping = true;
             }
@@ -115,14 +115,10 @@ namespace A2
 
             if (isJumping)
             {
-                if (DEBUG)
-                {
-                    Debug.Log("PLAYER: Player is jumping");
-                }
+                isJumping = false;
                 AudioManager.Instance.PlaySFX(AudioManager.Instance.jump);
                 Vector2 jumpingVector = isInverted ? Vector2.down : Vector2.up;
                 rigidBody.AddForce(jumpingVector * jumpForce, ForceMode2D.Impulse);
-                isJumping = false;
             }
         }
     }

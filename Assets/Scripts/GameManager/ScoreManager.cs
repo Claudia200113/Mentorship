@@ -7,21 +7,13 @@ public class ScoreManager : MonoBehaviour
 {
    [HideInInspector] public float currentScore;
    [HideInInspector] public float finalScore;
-   void OnEnable()
-   {
-      Health.OnPlayerDeath += GameOver; 
-   }
-   
-   void OnDisable()
-   {
-      Health.OnPlayerDeath -= GameOver;
-   }
    public void Update()
    {
       currentScore += Time.deltaTime;
    }
-   private void GameOver()
+   public bool SetHighScore()
    {
+      Debug.Log("SetHighScore Called");
       finalScore = currentScore + (10 * GameManager.Instance.playerInventory.numberGems);
       
       if (PlayerPrefs.HasKey("SavedHighScore"))
@@ -29,16 +21,15 @@ public class ScoreManager : MonoBehaviour
          if (finalScore > PlayerPrefs.GetInt("SavedHighScore"))
          {
             PlayerPrefs.SetInt("SavedHighScore",(int)finalScore);
+            return true;
          }
         
       } else
       {
          PlayerPrefs.SetInt("SavedHighScore", (int)finalScore);
+         return true;
       }
-   }
 
-   public void HighScoreUpdate()
-   {
-   
+      return false;
    }
 }
