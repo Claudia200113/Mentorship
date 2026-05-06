@@ -20,10 +20,9 @@ Controls:
 - *Scriptable Objects:* SO used to set pools and spawners, creating cleaner code and ease changes.
 - *HUD:* Used to track score, lives and pickups. Uses a UI reference script of type singelton to set references and a UI updator that using the set references updates the game. 
 - *Player Inventory:* Tracks pick-ups.
+- *Difficulty controlled by a costumizable curve:* The speed for enemies and map movement is set through a curve allowing smooth and controlled movement, in addition allowing to easily change the level difficulty, speed, and time to reach max. speed. 
 - *Game/Audio/UI Managers:* Created using a Singleton pattern, used to get references and set general aspects such as pools and spawners.
 
-## How to run the game in this state
-To run the game the user can either run the scene called "Menu" or directly the "EndlessRunner" scene. No further set up is needed. 
-
-## State of the game
-The game counts with a playable demo and most of the core mechanics are ready. Missing features include: a second type of enemies, sound effects and features to gradually increase level difficulty.
+## How to run the game
+The user just needs to run the scene called "Menu". No further set up is needed. 
+Additionally, game can be played online on itch.io : 
