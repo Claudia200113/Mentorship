@@ -21,7 +21,7 @@ Controls:
 - *HUD:* Used to track score, lives and pickups. Uses a UI reference script of type singelton to set references and a UI updator that using the set references updates the game. 
 - *Player Inventory:* Tracks pick-ups.
 - *Difficulty controlled by a costumizable curve:* The speed for enemies and map movement is set through a curve allowing smooth and controlled movement. In addition, using a curve allows to easily change the game difficulty by setting max. speed and time to reach it.  
-- *Game/Audio/UI Managers:* Created using Static Instances so they can be accesed by other scripts. Used to get references and set general aspects.
+- *Game/Audio/UI Managers:* Created using a singleton pattern and used to set general references. Acts like a Central HUB where other scripts can get references from, no logic is set here (except global speed).
 
 ## How to run the game
 The user just needs to run the scene called "Menu". No further set up is needed. 
