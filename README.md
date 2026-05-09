@@ -6,7 +6,7 @@
 </p>
 
 # Overview
-Running We Go is an endeless runner developed in Unity where the player must survive for as long as possible while avoiding enemies and environmental hazards.
+Running We Go is an endless runner developed in Unity where the player must survive for as long as possible while avoiding enemies and environmental hazards.
 
 The core mechanic allows the player to switch between running on the ground and the ceiling, creating a fast-paced gameplay focused on timing and quick reactions. Players must use this ability to dodge obstacles, avoid enemies, and collect gems while the game's speed countinously increases over time.
 
