@@ -1,10 +1,14 @@
 # Running we go!
 **Run, survive and escape the horrors hidden inside the cave!**
 
+![Preview of Game](Media/GamePlay1.png)
+
 # Overview
 Running We Go is an endeless runner developed in Unity where the player must survive for as long as possible while avoiding enemies and environmental hazards.
 
 The core mechanic allows the player to switch between running on the ground and the ceiling, creating a fast-paced gameplay focused on timing and quick reactions. Players must use this ability to dodge obstacles, avoid enemies, and collect gems while the game's speed countinously increases over time.
+
+![Gameplay Image](Media/GamePlay2.png)
 
 # Development 
 This project was developed as part of Ubisoft’s 2026 Programming Mentorship Program. The goal of the program was to pair mentees with experienced Ubisoft programmers to receive guidance and hands-on experience while developing a game from start to finish. The game itself was fully designed and developed by me, Claudia Rodriguez, using Unity, C#, and JetBrains Rider.
