@@ -1,27 +1,46 @@
 # Running we go!
-**Run, survive and try to escape the horrors that await in this cave!**
+**Run, survive and escape the horrors hidden inside the cave!**
 
-## Overview
-Running we go is an endeless runner where the player needs to survive as long as possible. The player will encounter enemies and obstacles that will try to stop them from escaping, but they have a secret ability...  
-#### **The player can change between running on the ground or on the cave's ceiling**.  
-That is right! The player can decide whether to run on the floor or the ceiling so they can try dodging enemies, obstacles, collecting gems and running as far as possible. 
+# Overview
+Running We Go is an endeless runner developed in Unity where the player must survive for as long as possible while avoiding enemies and environmental hazards.
 
-## Development 
-The game was developed inside Unity by me, Claudia Rodriguez. It was programmed using C# and JetBrains Raiders. All art assets (sprites, fonts, sound) are from third parties and free to use.
+The core mechanic allows the player to switch between running on the ground and the ceiling, creating a fast-paced gameplay focused on timing and quick reactions. Players must use this ability to dodge obstacles, avoid enemies, and collect gems while the game's speed countinously increases over time.
 
-Controls:
+# Development 
+This project was developed as part of Ubisoft’s 2026 Programming Mentorship Program. The goal of the program was to pair mentees with experienced Ubisoft programmers to receive guidance and hands-on experience while developing a game from start to finish. The game itself was fully designed and developed by me, Claudia Rodriguez, using Unity, C#, and JetBrains Rider.
+
+Art assets, fonts, and the audio were created by third parties and are free to use resources.
+
+## Controls
   - Movement : *AD or Left / Right arrows*
   - Jump between ground and ceiling : *R*
   - Jumping: *W or Up arrow*
-  - Pause: *Esc*
 
-## Game Features - Programming wise
-- *Generic pool system:* Used for enemies, map, VFX, pick-ups pool creation. 
-- *Scriptable Objects:* SO used to set pools and spawners, creating more modular and clean code, easing changes.
-- *Difficulty controlled by a costumizable curve:* The speed for enemies and map movement is set through a curve allowing smooth and controlled movement. In addition, using a curve allows to easily change the game difficulty by setting max. speed and time to reach it.
-- *Subscription to Events:* Events are use to help decoupling scripts, set for events such as the player dying. 
-- *Game/Audio/UI Managers:* Created using a singleton pattern and used to set general references. Acts like a Central HUB where other scripts can get references from, no logic is set here (except global speed).
+# Technical Features
 
-## How to run the game
-Game ZIP file can be downloaded and the game can be run from the "Menu" scene. No further set up is needed. 
-Additionally, game can be played online on itch.io: 
+## Generic Object Pooling System
+Implemented a reusable pooling system used for enemies, VFX, pickups, and map tiles. 
+This reduces runtime instantiation/destruction costs and improves overall performance.
+
+## Scriptable Object Architecture
+Used Scriptable Objects to configure pools and spawners, in order to keep systems modular and designer-friendly while reducing hardcoded values.
+
+## Curve-Based Difficulty Scaling
+Game speed and difficulty progression are controlled using a customizable curve.
+This creates a designer friendly interface, and allows smooth difficulty progression by easily changing max. speed values and time to reach said speed.
+
+## Event-Driven Systems
+Implemented event subscriptions to decouple gameplay systems and reduce direct dependencies between scripts.
+
+## Singleton Managers
+Used singleton pattern to manage game state, score, audio and global references. This allow to set centralized access points while keeping gameplay logic in separated systems. 
+
+# Project Goals
+The objective of this project was to practice and improve system architecture, clean usage of design patterns, modular development, scalable code structure, performance optimziation, and maintainable C# practices.
+
+# How to run the game
+Project can be run either locally or online. 
+For local build: 
+Game ZIP file can be downloaded and the game can be run from the "Menu" scene. No additional set up is requiered.
+Onine version:
+Game can be played on itch.io: 
