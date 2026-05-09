@@ -17,12 +17,11 @@ Controls:
 
 ## Game Features - Programming wise
 - *Generic pool system:* Used for enemies, map, VFX, pick-ups pool creation. 
-- *Scriptable Objects:* SO used to set pools and spawners, creating cleaner code and ease changes.
-- *HUD:* Used to track score, lives and pickups. Uses a UI reference script of type singelton to set references and a UI updator that using the set references updates the game. 
-- *Player Inventory:* Tracks pick-ups.
-- *Difficulty controlled by a costumizable curve:* The speed for enemies and map movement is set through a curve allowing smooth and controlled movement. In addition, using a curve allows to easily change the game difficulty by setting max. speed and time to reach it.  
+- *Scriptable Objects:* SO used to set pools and spawners, creating more modular and clean code, easing changes.
+- *Difficulty controlled by a costumizable curve:* The speed for enemies and map movement is set through a curve allowing smooth and controlled movement. In addition, using a curve allows to easily change the game difficulty by setting max. speed and time to reach it.
+- *Subscription to Events:* Events are use to help decoupling scripts, set for events such as the player dying. 
 - *Game/Audio/UI Managers:* Created using a singleton pattern and used to set general references. Acts like a Central HUB where other scripts can get references from, no logic is set here (except global speed).
 
 ## How to run the game
-The user just needs to run the scene called "Menu". No further set up is needed. 
-Additionally, game can be played online on itch.io : 
+Game ZIP file can be downloaded and the game can be run from the "Menu" scene. No further set up is needed. 
+Additionally, game can be played online on itch.io: 
