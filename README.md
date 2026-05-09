@@ -31,7 +31,7 @@ Implemented a reusable pooling system used for enemies, VFX, pickups, and map ti
 This reduces runtime instantiation/destruction costs and improves overall performance.
 
 <p align="center">
-  <img src="Media/Pool.png" width="650">
+  <img src="Media/Pool.png" width="450">
 </p>
 
 
@@ -39,7 +39,7 @@ This reduces runtime instantiation/destruction costs and improves overall perfor
 Used Scriptable Objects to configure pools and spawners, in order to keep systems modular and designer-friendly while reducing hardcoded values.
 
 <p align="center">
-  <img src="Media/SO_Spawner.png" width="650">
+  <img src="Media/SO_Spawner.png" width="450">
 </p>
 
 ## Curve-Based Difficulty Scaling
@@ -47,7 +47,7 @@ Game speed and difficulty progression are controlled using a customizable curve.
 This creates a designer friendly interface, and allows smooth difficulty progression by easily changing max. speed values and time to reach said speed.
 
 <p align="center">
-  <img src="Media/Curve.png" width="650">
+  <img src="Media/Curve.png" width="400">
 </p>
 
 ## Event-Driven Systems
