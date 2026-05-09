@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+//Singleton type, used to set all the references so other scripts can access them. No logic is managed here.
 namespace UI
 {
     public class UIManager : MonoBehaviour

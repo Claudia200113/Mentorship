@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Singleton type, persists on changing scenes. Takes all the audio clips, plays background music on start and has a
+//PlaySFX method to play a oneshot of a given audio clip. 
 public class AudioManager : MonoBehaviour
 {
    [Header("Audio Source")]

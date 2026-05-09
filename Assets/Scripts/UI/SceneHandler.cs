@@ -4,13 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//Manages scene loading for main menu, tutorial, game and quitting the game. 
 public class SceneHandler : MonoBehaviour
 {
-    private void Update()
-    {
-        
-    }
-
     public void GoToMainMenu()
     {
         Time.timeScale = 1;
@@ -24,11 +20,13 @@ public class SceneHandler : MonoBehaviour
 
     public void GoToTutorial()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(1);
     }
     
     public void GoToGame()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(2);
     }
 
