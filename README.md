@@ -8,7 +8,7 @@
 # Overview
 Running We Go is an endless runner developed in Unity where the player must survive for as long as possible while avoiding enemies and environmental hazards.
 
-The core mechanic allows the player to switch between running on the ground and the ceiling, creating a fast-paced gameplay focused on timing and quick reactions. Players must use this ability to dodge obstacles, avoid enemies, and collect gems while the game's speed countinously increases over time.
+The core mechanic allows the player to switch between running on the ground and the ceiling, creating a fast-paced gameplay focused on timing and quick reactions. Players must use this ability to dodge obstacles, avoid enemies, and collect gems while the game's speed continuously increases over time.
 
 <p align="center">
   <img src="Media/GamePlay2.png" width="650">
@@ -61,11 +61,11 @@ Used singleton pattern to manage game state, score, audio and global references.
 </p>
 
 # Project Goals
-The objective of this project was to practice and improve system architecture, clean usage of design patterns, modular development, scalable code structure, performance optimziation, and maintainable C# practices.
+The objective of this project was to practice and improve system architecture, clean usage of design patterns, modular development, scalable code structure, performance optimization, and maintainable C# practices.
 
 # How to run the game
 Project can be run either locally or online. 
 For local build: 
-Game ZIP file can be downloaded and the game can be run from the "Menu" scene. No additional set up is requiered.
-Onine version:
+Game ZIP file can be downloaded and the game can be run from the "Menu" scene. No additional set up is required.
+Online version:
 Game can be played on itch.io: 
