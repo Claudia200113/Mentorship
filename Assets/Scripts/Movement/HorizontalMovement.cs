@@ -1,55 +1,51 @@
-using System.Collections;
 using UnityEngine;
 
-namespace A2
-{
+//Moves enemies in a horizontal line according to the global speed set on the game manager script.
     public class HorizontalMovement : MonoBehaviour
     {
-        public bool DEBUG;
-        
-        [SerializeField] private float horizontalSpeed = 1f;
-        [SerializeField] private float destroyAfterSeconds = 5f;
+        private float horizontalSpeed;
         [SerializeField] private PoolLogic.PoolType poolType;
         
-        private Rigidbody2D rigidbody;
-
-        private void Start()
-        {
-            rigidbody = GetComponent<Rigidbody2D>();
-            StartCoroutine(ReturnToQueueTime());
-        }
-        private void Update()
-        {
-            if (DEBUG)
-            {
-                Debug.DrawRay(transform.position, new Vector3(-horizontalSpeed, 0, 0) * .5f, Color.red);
-            }
-        }
         private void FixedUpdate()
         {
             Move();
         }
 
         private void Move()
-        { 
-            transform.Translate(-horizontalSpeed * Time.deltaTime, 0, 0);
-        }
-
-        IEnumerator ReturnToQueueTime()
         {
-            yield return new WaitForSeconds(destroyAfterSeconds);
-            ReturnToQueue();
+            //gets horizontal speed
+            horizontalSpeed = GameManager.Instance.globalSpeed;
+            //changes direction if instance is warrior, set this way because of animation sprites
+            if (poolType == PoolLogic.PoolType.Warrior)
+            {
+                transform.Translate(horizontalSpeed * Time.deltaTime, 0, 0);
+            }
+            else
+            {
+                transform.Translate(-horizontalSpeed * Time.deltaTime, 0, 0);
+            }
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            ReturnToQueue();
+            if (!collision.gameObject.CompareTag("Ground"))
+            {
+                if(poolType != PoolLogic.PoolType.Map)ReturnToQueue();
+            }
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            ReturnToQueue();
-
+            if (poolType != PoolLogic.PoolType.Map)
+            {
+                if (poolType == PoolLogic.PoolType.Gem && collision.CompareTag("Player"))
+                {
+                    ReturnToQueue();
+                }else if (collision.CompareTag("TriggerRequeue"))
+                {
+                    ReturnToQueue();
+                }
+            }
         }
 
         private void ReturnToQueue()
@@ -57,4 +53,4 @@ namespace A2
             GameManager.Instance.poolLogic.ReturnToQueue(poolType, gameObject);
         }
     }
-}
+

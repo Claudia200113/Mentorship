@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SO_SpawSet_Stalactite
   m_EditorClassIdentifier: 
   poolType: 5
-  minTimeSpawn: 2
-  maxTimeSpawn: 5
+  minTimeSpawn: 4
+  maxTimeSpawn: 6

@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-
-namespace A2
-{
+//Manages the player inputs for horizontal and vertical movement, as well as changing between the ground and ceiling.
     public class PlayerMovement : MonoBehaviour
     {
         public bool DEBUG;
@@ -25,20 +23,21 @@ namespace A2
         [Header("Jump variables")]
         public      float           jumpForce = 5f;
         public      LayerMask       groundLayer;
-        public      float           groundDistanceToJump = 0.3f;
+        public      float           groundDistanceToJump = 0.2f;
         [HideInInspector]
         public      bool            isGrounded;
         private     bool            isJumping;
         private     bool            isInverted;
         public      Transform       feetPosition;
-
-
+        
+        
         private void Awake()
         {
             rigidBody = GetComponent<Rigidbody2D>();
             spriteRenderer = GetComponentInChildren<SpriteRenderer>();
             normalGravity = rigidBody.gravityScale;
         }
+        
         void Update()
         {
             CheckHorizontalMovement();
@@ -73,7 +72,7 @@ namespace A2
             Vector2 groundCheck = isInverted ? Vector2.up : Vector2.down;
             isGrounded = Physics2D.Raycast(feetPosition.position, groundCheck, groundDistanceToJump, groundLayer);
             
-            if (isGrounded && (Input.GetButtonDown("Jump") || Input.GetButtonDown("Vertical")))
+            if (isGrounded && (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.UpArrow)))
             {
                 isJumping = true;
             }
@@ -92,6 +91,7 @@ namespace A2
         {
             Vector2 currentVelocity = rigidBody.velocity;
 
+            //Changes speed according to the direction the player is moving
             if (playerGoingBackwards)
             {
                 if (DEBUG)
@@ -101,7 +101,6 @@ namespace A2
 
                 rigidBody.velocity = new Vector2(playerDirection.x * playerSpeedBackwards, currentVelocity.y);
                 spriteRenderer.flipX = true;
-                //gameObject.transform.Rotate(0f, 180f, 0f, Space.World);
             }
             else 
             {
@@ -112,29 +111,15 @@ namespace A2
 
                 rigidBody.velocity = new Vector2(playerDirection.x * playerSpeedForward, currentVelocity.y);
                 spriteRenderer.flipX = false;
-                //gameObject.transform.Rotate(0f, 0f, 0f, Space.World);
             }
 
             if (isJumping)
             {
-                if (DEBUG)
-                {
-                    Debug.Log("PLAYER: Player is jumping");
-                }
-                
+                isJumping = false;
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.jump);
                 Vector2 jumpingVector = isInverted ? Vector2.down : Vector2.up;
                 rigidBody.AddForce(jumpingVector * jumpForce, ForceMode2D.Impulse);
-                isJumping = false;
-            }
-        }
-
-        private void OnDrawGizmos()
-        {
-            if (DEBUG)
-            {
-                Gizmos.color = new Color(.165f, .824f, .871f, .5f);
-                Gizmos.DrawSphere(feetPosition.position, groundDistanceToJump);
             }
         }
     }
-}
+

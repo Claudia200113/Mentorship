@@ -1,11 +1,10 @@
 using System;
-using A2;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace A2
-{
+//Spawns map.
+//It was set this way so spawn points can be set inside the editor in specific locations and map tiles seamlessly. 
     public class MapSpawner : MonoBehaviour
     {
         public Transform posSpawn;
@@ -24,5 +23,3 @@ namespace A2
             }
         }
     }
-
-}

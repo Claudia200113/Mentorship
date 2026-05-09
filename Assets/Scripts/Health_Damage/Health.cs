@@ -1,9 +1,7 @@
-using A2;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics.Tracing;
-using System.Runtime.CompilerServices;
+using System;
 using UnityEngine;
+
+//Manages player health
 
     public class Health : MonoBehaviour
     {
@@ -14,9 +12,11 @@ using UnityEngine;
         public float maxHp = 100f;
         private float counterDamage = 0;
         private bool damageTaken = false;
-        [HideInInspector]
-        private bool dead = false;
+        public bool dead = false;
         private SpriteRenderer spriteRenderer;
+        
+        //Creates on player death event
+        public static event Action OnPlayerDeath;
 
         private void Awake()
         {
@@ -31,66 +31,28 @@ using UnityEngine;
             UpdateDamageArt();
         }
 
-        public bool TakeDamage(float damage)
+        public void TakeDamage(float damage)
         {
             currentHp -= damage;
             counterDamage = 0;
             damageTaken = true;
-
-            if (currentHp > 0)
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.damage);
+            
+            if (currentHp <= 0)
             {
-                if (DEBUG)
-                {
-                    Debug.Log("HEALTH: " + gameObject.name + " was damaged, life now at " + currentHp);
-                }
-
-                dead = false;
-
+              DeathFromDamage();
             }
-            else if (currentHp <= 0) //If health goes less than 0, DeathFromDamage is called 
-            {
-                if (DEBUG)
-                {
-                    Debug.Log("HEALTH:" + gameObject.name + " no life points left, calling DeathFromDamage()");
-                }
-
-                dead = true;
-                DeathFromDamage();
-            }
-            //Returns the flag
-            return dead;
         }
 
         private void DeathFromDamage()
         {
-            //gameObject.SetActive(false);
-            GameManager.Instance.sceneHandler.GoToGameOver();
-            if (DEBUG)
-            {
-                Debug.Log("HEALTH: " + gameObject.name + " died from damage, gameObject deactivated");
-            }
+            dead = true;
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.death);
+            OnPlayerDeath?.Invoke();
+            GameManager.Instance.playerPrefab.SetActive(false);
         }
-
-        public void GainHealth(int health)
-        {
-            if (currentHp > 100)
-            {
-                if (DEBUG)
-                {
-                    Debug.Log("HEALTH:" + gameObject.name + " health´s is 100, can't add more");
-                }
-                else if (currentHp < 100)
-                {
-                    currentHp += health;
-                    if (DEBUG)
-                    {
-                        Debug.Log(
-                            "HEALTH:" + gameObject.name + " gained " + health + ", now health is at: " + currentHp);
-                    }
-                }
-            }
-        }
-
+        
+        //if damage is taken the player sprite color is momentaneously changed to red
         private void UpdateDamageArt()
         {
             if (damageTaken)

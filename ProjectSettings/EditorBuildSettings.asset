@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EndlessRunner.unity
     guid: 25a8ff9c328946047a125370bb7ee184
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GameOver.unity
     guid: 3a6daadc9a875c14b809a36cfa4d0bea
   m_configObjects: {}

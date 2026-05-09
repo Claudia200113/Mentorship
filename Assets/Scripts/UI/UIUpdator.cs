@@ -1,12 +1,22 @@
-using UnityEditor;
 using UnityEngine;
 
+//Subscribed to OnPlayerDeath event.
+//Updates UI elements: score, gems, health, and pause and game over screens.
 namespace UI
 {
     public class UIUpdator : MonoBehaviour
     {
-        private float score;
         public bool GamePaused = false;
+
+        void OnEnable()
+        {
+            Health.OnPlayerDeath += GameOver; 
+        }
+
+        void OnDisable()
+        {
+            Health.OnPlayerDeath -= GameOver;
+        }
 
         void Start()
         {
@@ -16,20 +26,18 @@ namespace UI
 
         private void Update()
         {
-            SetScore();
-            SetGems();
+            ShowScore();
+            ShowGems();
             UpdateHearts();
             HandlePause();
-
         }
 
-        private void SetScore()
+        private void ShowScore()
         {
-            score+= 1 * Time.deltaTime;
-            UIManager.Instance.scoreText.text = "Score: " + (int)score;
+            UIManager.Instance.scoreText.text = "Score: " + (int)GameManager.Instance.scoreManager.currentScore;
         }
 
-        private void SetGems()
+        private void ShowGems()
         {
             var referenceToGems = GameManager.Instance.playerInventory.numberGems;
             UIManager.Instance.gemsText.text = "x " + referenceToGems;
@@ -82,7 +90,17 @@ namespace UI
             GamePaused = true;
         }
 
-
+        void GameOver()
+        {
+            //Checks the highest saved score and updates if necessary
+            GameManager.Instance.scoreManager.SetHighScore();
+            UIManager.Instance.gameUI.SetActive(false); 
+            //Shows game over screen
+            UIManager.Instance.gameOverMenu.SetActive(true); 
+            //Shows in UI the score and saved record
+            UIManager.Instance.gameOverText.text = "Score: " + (int)GameManager.Instance.scoreManager.currentScore + " Gems: " + GameManager.Instance.playerInventory.numberGems + "\nFinal Score: " + (int)GameManager.Instance.scoreManager.finalScore; 
+            UIManager.Instance.hiScoreText.text = "Record: " + PlayerPrefs.GetInt("SavedHighScore");
+        }
     }
 }
 

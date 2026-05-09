@@ -10,6 +10,8 @@ TagManager:
   - MapRequeue
   - Boundries
   - Gem
+  - TriggerRequeue
+  - Ground
   layers:
   - Default
   - TransparentFX
