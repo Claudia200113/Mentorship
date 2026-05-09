@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Creates an infinite background by offsetting the image and tilling it
 public class BG : MonoBehaviour
 {
     private Material mat;

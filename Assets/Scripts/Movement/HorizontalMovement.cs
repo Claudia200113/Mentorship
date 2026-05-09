@@ -1,20 +1,10 @@
-using System;
-using System.Collections;
 using UnityEngine;
 
-
+//Moves enemies in a horizontal line according to the global speed set on the game manager script.
     public class HorizontalMovement : MonoBehaviour
     {
         private float horizontalSpeed;
-        //[SerializeField] private float destroyAfterSeconds = 5f;
         [SerializeField] private PoolLogic.PoolType poolType;
-        
-        private AudioSource audioSource;
-        
-        private void Awake()
-        {
-            //StartCoroutine(ReturnToQueueTime());
-        }
         
         private void FixedUpdate()
         {
@@ -23,8 +13,9 @@ using UnityEngine;
 
         private void Move()
         {
+            //gets horizontal speed
             horizontalSpeed = GameManager.Instance.globalSpeed;
-            
+            //changes direction if instance is warrior, set this way because of animation sprites
             if (poolType == PoolLogic.PoolType.Warrior)
             {
                 transform.Translate(horizontalSpeed * Time.deltaTime, 0, 0);
@@ -35,15 +26,12 @@ using UnityEngine;
             }
         }
 
-       /* IEnumerator ReturnToQueueTime()
-        {
-            yield return new WaitForSeconds(destroyAfterSeconds);
-            ReturnToQueue();
-        }*/
-
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if(poolType != PoolLogic.PoolType.Map) ReturnToQueue();
+            if (!collision.gameObject.CompareTag("Ground"))
+            {
+                if(poolType != PoolLogic.PoolType.Map)ReturnToQueue();
+            }
         }
 
         private void OnTriggerEnter2D(Collider2D collision)

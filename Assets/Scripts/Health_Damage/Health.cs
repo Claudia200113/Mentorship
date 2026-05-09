@@ -1,11 +1,7 @@
 using System;
-using A2;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics.Tracing;
-using System.Runtime.CompilerServices;
-using UI;
 using UnityEngine;
+
+//Manages player health
 
     public class Health : MonoBehaviour
     {
@@ -19,6 +15,7 @@ using UnityEngine;
         public bool dead = false;
         private SpriteRenderer spriteRenderer;
         
+        //Creates on player death event
         public static event Action OnPlayerDeath;
 
         private void Awake()
@@ -54,17 +51,8 @@ using UnityEngine;
             OnPlayerDeath?.Invoke();
             GameManager.Instance.playerPrefab.SetActive(false);
         }
-
-        public void GainHealth(int health)
-        {
-            
-                if (currentHp < 100)
-                {
-                    currentHp += health;
-                }
-            
-        }
-
+        
+        //if damage is taken the player sprite color is momentaneously changed to red
         private void UpdateDamageArt()
         {
             if (damageTaken)

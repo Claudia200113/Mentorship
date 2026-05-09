@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 
-//Singleton type
+//Singleton, used to set references so other scripts can access them.
+//Only logic managed here is the global speed in relation to the gameplay time.
 public class GameManager : MonoBehaviour
 {
     //List for pools--------------------------------------------
@@ -65,8 +66,10 @@ public class GameManager : MonoBehaviour
     {
         AccelerationSet();
     }
+    
     private void AccelerationSet()
     {
+        //Evaluates in relation to the gameplay time.
        globalSpeed = speedCurve.Evaluate(scoreManager.currentScore);
     }
     

@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-
-namespace A2
-{
+//Manages the player inputs for horizontal and vertical movement, as well as changing between the ground and ceiling.
     public class PlayerMovement : MonoBehaviour
     {
         public bool DEBUG;
@@ -39,6 +37,7 @@ namespace A2
             spriteRenderer = GetComponentInChildren<SpriteRenderer>();
             normalGravity = rigidBody.gravityScale;
         }
+        
         void Update()
         {
             CheckHorizontalMovement();
@@ -92,6 +91,7 @@ namespace A2
         {
             Vector2 currentVelocity = rigidBody.velocity;
 
+            //Changes speed according to the direction the player is moving
             if (playerGoingBackwards)
             {
                 if (DEBUG)
@@ -122,4 +122,4 @@ namespace A2
             }
         }
     }
-}
+

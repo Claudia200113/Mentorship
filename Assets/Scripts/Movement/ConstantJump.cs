@@ -3,27 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JumpAndHorMovement : MonoBehaviour
+//Adds constant jumps on an enemy, works along with the rigidbody. 
+public class ConstantJump : MonoBehaviour
 {
-    [SerializeField] private float timeBetweenJumps = 3;
+    [SerializeField] private float timeBetweenJumps;
     [SerializeField] private float jumpForce;
     private      Rigidbody2D     rigidBody;
-    private AudioSource audioSource;
-    
-    private void OnEnable()
-    {
-    }
-
-    private void OnDisable()
-    {
-        audioSource.Stop();
-    }
     private void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
         rigidBody = GetComponent<Rigidbody2D>();
     }
+
     private void Start()
+    {
+        StartCoroutine(Jump());
+    }
+    private void OnEnable()
     {
         StartCoroutine(Jump());
     }
@@ -32,8 +27,8 @@ public class JumpAndHorMovement : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(timeBetweenJumps);
             rigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            yield return new WaitForSeconds(timeBetweenJumps);
         }
     }
 }

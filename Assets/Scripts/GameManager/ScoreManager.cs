@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Calculates the score and saves high score when game finishes.
 public class ScoreManager : MonoBehaviour
 {
    [HideInInspector] public float currentScore;
@@ -11,9 +12,9 @@ public class ScoreManager : MonoBehaviour
    {
       currentScore += Time.deltaTime;
    }
-   public bool SetHighScore()
+   public void SetHighScore()
    {
-      Debug.Log("SetHighScore Called");
+      //Final score is calculated by base score and amount of gems collected.
       finalScore = currentScore + (10 * GameManager.Instance.playerInventory.numberGems);
       
       if (PlayerPrefs.HasKey("SavedHighScore"))
@@ -21,15 +22,12 @@ public class ScoreManager : MonoBehaviour
          if (finalScore > PlayerPrefs.GetInt("SavedHighScore"))
          {
             PlayerPrefs.SetInt("SavedHighScore",(int)finalScore);
-            return true;
          }
         
       } else
       {
          PlayerPrefs.SetInt("SavedHighScore", (int)finalScore);
-         return true;
       }
 
-      return false;
    }
 }
