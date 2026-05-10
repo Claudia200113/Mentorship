@@ -68,4 +68,4 @@ Project can be run either locally or online.
 For local build: 
 Game ZIP file can be downloaded and the game can be run from the "Menu" scene. No additional set up is required.
 Online version:
-Game can be played on itch.io: 
+Game can be played on [Itch.io](https://alti0rem.itch.io/running-we-go)
